@@ -17,7 +17,7 @@ MongoClient.connect('mongodb+srv://cho1:jk007456@cluster0.ikeip.mongodb.net/myFi
 })
 
 app.get('/', function(req, res){
-    res.render('homepage.ejs');
+    res.sendFile(__dirname + '/homepage.html')
 });
 
 
