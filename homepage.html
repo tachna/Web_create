@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="/public/main.css" rel="stylesheet"> <!--css파일 삽입법-->
@@ -14,189 +14,76 @@
   <body>
     
     <!---------------------------------------------------------------------------------------->
-
-    <script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <nav id="menu">
-        <div class="menu-item">
-            <div class="menu-text">
-                <a href="#">Home</a>
-            </div>
-            <div class="sub-menu">
-                <div class="icon-box">
-                    <div class="icon"><i class="fal fa-wind-turbine"></i></div>
-                    <div class="text">
-                        <div class="title">Turbo Editor <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">Edit your code while slowing down time.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fal fa-lightbulb-on"></i></div>
-                    <div class="text">
-                        <div class="title">Idea Creator <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">Think of an idea, and have an AI create it.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fal fa-bomb"></i></div>
-                    <div class="text">
-                        <div class="title">Super Collider <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">Remove mass from any object.</div>
-                    </div>
-                </div>
-                <div class="sub-menu-holder"></div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Web Study</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class ="container" class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/install">Install</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Community
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Writing</a>
+                <a class="dropdown-item" href="/list">List</a>
+              </li>
+            
+         
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
         </div>
-        <div class="menu-item highlight">
-            <div class="menu-text">
-                <a href="#">How to Start</a>
-            </div>
-            <div class="sub-menu double">
-                <div class="icon-box gb a">
-                    <div class="icon"><i class="far fa-question-circle"></i></div>
-                    <div class="text">
-                        <div class="title">Consult <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">From Professionals</div>
-                    </div>
-                </div>
-                <div class="icon-box gb b">
-                    <div class="icon"><i class="far fa-users-class"></i></div>
-                    <div class="text">
-                        <div class="title">Teach <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">In Classroom</div>
-                    </div>
-                </div>
-                <div class="icon-box gb c">
-                    <div class="icon"><i class="far fa-school"></i></div>
-                    <div class="text">
-                        <div class="title">Learn <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">By Video</div>
-                    </div>
-                </div>
-                <div class="icon-box gb d">
-                    <div class="icon"><i class="far fa-chess-rook"></i></div>
-                    <div class="text">
-                        <div class="title">Keep <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">The Castle</div>
-                    </div>
-                </div>
-                <div class="icon-box gb e">
-                    <div class="icon"><i class="far fa-video-plus"></i></div>
-                    <div class="text">
-                        <div class="title">Become <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">A Creator</div>
-                    </div>
-                </div>
-                <div class="icon-box gb f">
-                    <div class="icon"><i class="far fa-cat"></i></div>
-                    <div class="text">
-                        <div class="title">Understand <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">Our Journey</div>
-                    </div>
-                </div>
-                <div class="bottom-container">
-                    Ready to dive in? <a href="#">Get Started</a>
-                </div>
-                <div class="sub-menu-holder"></div>
-            </div>
-        </div>
-        <div class="menu-item highlight">
-            <div class="menu-text">
-                <a href="#">Question</a>
-            </div>
-            <div class="sub-menu triple">
-                <div class="top-container gb c icon-box">
-                    <div class="icon big"><i class="far fa-book"></i></div>
-                    <div class="text">
-                        <div class="title">Where to start</div>
-                        <div class="sub-text">Find out where to begin below</div>
-                    </div>
-                </div>
-                <div class="box">
-                    <h3>Your Journey</h3>
-                    <a href="#">Get Started</a>
-                    <a href="#">Learn the Basics</a>
-                    <a href="#">Get Advanced</a>
-                    <a href="#">Start Teaching</a>
-                </div>
-                <div class="box">
-                    <h3>Your Tools</h3>
-                    <a href="#">Turbo Editor</a>
-                    <a href="#">Time Stopper</a>
-                    <a href="#">Brain Enhancer</a>
-                    <a href="#">Network Maker</a>
-                </div>
-                <div class="icon-box flat">
-                    <div class="icon"><i class="fal fa-plug"></i></div>
-                    <div class="text">
-                        <div class="title">API Guide <i class="far fa-arrow-right"></i></div>
-                    </div>
-                </div>
-                <div class="icon-box flat">
-                    <div class="icon"><i class="fal fa-comments"></i></div>
-                    <div class="text">
-                        <div class="title">Support Line <i class="far fa-arrow-right"></i></div>
-                    </div>
-                </div>
-                <div class="icon-box flat">
-                    <div class="icon"><i class="fal fa-phone-volume"></i></div>
-                    <div class="text">
-                        <div class="title">Live Chat <i class="far fa-arrow-right"></i></div>
-                    </div>
-                </div>
-                <div class="icon-box flat">
-                    <div class="icon"><i class="fal fa-book-spells"></i></div>
-                    <div class="text">
-                        <div class="title">Documentation <i class="far fa-arrow-right"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="menu-item">
-            <div class="menu-text">
-                <a href="#">Community</a>
-            </div>
-            <div class="sub-menu">
-                <div class="icon-box">
-                    <div class="icon"><i class="far fa-satellite"></i></div>
-                    <div class="text">
-                        <div class="title">Forum <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">Join our passionate community.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitter-square"></i></div>
-                    <div class="text">
-                        <div class="title">Twitter <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">Follow us on twitter.</div>
-                    </div>
-                </div>
-                <div class="icon-box">
-                    <div class="icon"><i class="fab fa-twitch"></i></div>
-                    <div class="text">
-                        <div class="title">Live Stream <i class="far fa-arrow-right"></i></div>
-                        <div class="sub-text">We stream content every day.</div>
-                    </div>
-                </div>
-                <div class="sub-menu-holder"></div>
-            </div>
-        </div>
-        <div id="sub-menu-container">
-            <div id="sub-menu-holder">
-                <div id="sub-menu-bottom">
-
-                </div>
-            </div>
-        </div>
-    </nav>
-
-
+      </nav>
+    <!----------------------------------------------------------------------------------------> 
+    <h1 style="text-align:center;">How to start Web Study</h1>
+    <p>← <a href="https://www.nxworld.net/css-image-hover-effects.html" target="_blank">Today's article</a></p>
     
+    
+  
+  <div  class="container" style="padding:50px 50px 50px 50px;">
+    <div class="hover14 column">
+      <div style="text-align : center;"> 
+        <figure><svg viewBox="-20 20 140 125">
+          <path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"></path><path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"></path><path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"></path><path fill="#fff" d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"></path>
+          </svg></figure>
+        <span style='letter-spacing:5px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTML</span>
+      </div>
+
+      <div style="text-align : center;">
+        <figure><svg viewBox="-20 20 140 125">
+          <path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"></path><path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"></path><path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95V51.429z"></path><path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"></path><path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881H81.127z"></path><path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047 27.996v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447z"></path>
+          </svg></figure>
+        <span style='letter-spacing:5px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSS</span>
+      </div>
+      <div>
+
+        <div style="text-align : center;">
+          <figure><svg viewBox="-20 20 140 125">
+            <path fill="#F0DB4F" d="M2 1v125h125V1H2zm66.119 106.513c-1.845 3.749-5.367 6.212-9.448 7.401-6.271 1.44-12.269.619-16.731-2.059-2.986-1.832-5.318-4.652-6.901-7.901l9.52-5.83c.083.035.333.487.667 1.071 1.214 2.034 2.261 3.474 4.319 4.485 2.022.69 6.461 1.131 8.175-2.427 1.047-1.81.714-7.628.714-14.065C58.433 78.073 58.48 68 58.48 58h11.709c0 11 .06 21.418 0 32.152.025 6.58.596 12.446-2.07 17.361zm48.574-3.308c-4.07 13.922-26.762 14.374-35.83 5.176-1.916-2.165-3.117-3.296-4.26-5.795 4.819-2.772 4.819-2.772 9.508-5.485 2.547 3.915 4.902 6.068 9.139 6.949 5.748.702 11.531-1.273 10.234-7.378-1.333-4.986-11.77-6.199-18.873-11.531-7.211-4.843-8.901-16.611-2.975-23.335 1.975-2.487 5.343-4.343 8.877-5.235l3.688-.477c7.081-.143 11.507 1.727 14.756 5.355.904.916 1.642 1.904 3.022 4.045-3.772 2.404-3.76 2.381-9.163 5.879-1.154-2.486-3.069-4.046-5.093-4.724-3.142-.952-7.104.083-7.926 3.403-.285 1.023-.226 1.975.227 3.665 1.273 2.903 5.545 4.165 9.377 5.926 11.031 4.474 14.756 9.271 15.672 14.981.882 4.916-.213 8.105-.38 8.581z"></path>
+            </svg></figure>
+          <span style='letter-spacing:5px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript</span>
+        </div>
+        <div>
+
+    </div>
+  </div>
 
 
+
+
+
+      
+
+  
     <!----------------------------------------------------------------------------------------> 
 
     <!-- Optional JavaScript; choose one of the two! -->
