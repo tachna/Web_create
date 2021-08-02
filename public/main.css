@@ -3,12 +3,12 @@ div{
 }
 
 
-
 body {
-	color: #333;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
-}
+    font-family: 'Roboto', sans-serif;
+    color: rgb(85,75,85);
+    background-color: rgb(255,255,255);
+  }
+
 h1,
 h1+p {
 	margin: 30px 15px 0;
