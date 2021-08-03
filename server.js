@@ -8,6 +8,8 @@ app.set('view engine', 'ejs'); //ejs 사용 헤더
 app.use('/public', express.static('public')) //미들웨어, public폴더를 사용할것이다 (css파일관련)
 app.use('/uploads', express.static('uploads'));
 require('dotenv').config()//env환경변수 선언
+const methodOverride = require('method-override')// 메소드 오버라이드1
+app.use(methodOverride('_method'))//메소드 오버라이드2
 
 
 var db;
@@ -31,9 +33,7 @@ app.get('/list', function(req, res){
         res.render('list.ejs', { posts : result});
     });
 });
-app.get('/login', function(req, res){
-    res.render('login.ejs');
-});
+
 app.get('/write', function(req, res){
     res.render('write.ejs');
 });
@@ -64,3 +64,89 @@ app.delete('/delete',function(req, res){
         res.status(200).send({message:'succeed'});
     })
 })
+
+//로긴 페이지 셋팅 -----------------------------------------------------------------------------------------------
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session');
+app.use(session({secret:'비밀코드', resave : true, saveUninitialized : false}));
+app.use(passport.initialize());
+app.use(passport.session());
+//
+app.get('/login',function(req, res){
+    res.render('login.ejs')
+});
+app.post('/login', passport.authenticate('local',{
+    failureRedirect : 'fail' //로긴 실패시 fail경로로 보내짐
+}), function(req, res){
+    res.redirect('/') //로긴 성공시 '/' 로 보내짐
+});
+
+app.get('/mypage', 로긴유무 ,function(req, res){//mypage에 접속하면 로긴유무 함수 발동
+    console.log(req.user);
+    res.render('mypage.ejs',{ 사용자: req.user})
+})
+function 로긴유무(req, res, next){
+    if(req.user){
+        next()//있다면 통과
+    }else{
+        res.render('login.ejs');
+    }
+}
+
+//localstrategy인증방식
+passport.use(new LocalStrategy({ 
+    usernameField: 'id',
+    passwordField: 'pw',
+    session: true,
+    passReqToCallback: false,
+ }, function(입력한아이디, 입력한비번, done) {
+    console.log(입력한아이디, 입력한비번);
+    db.collection('login').findOne({ id: 입력한아이디 }, function(에러, 결과) {
+         if (에러) return done(에러) 
+         if (!결과) return done(null, false, { message: '존재하지않는 아이디요' }) 
+         if (입력한비번 == 결과.pw) {
+            return done(null, 결과)
+        } else {
+            return done(null, false, { message: '비번틀렸어요' })
+        }
+    })
+}));
+// 세션유지
+// 세션을 저장시키는 코드(로그인 성공시 발동)
+passport.serializeUser(function(user, done){
+    done(null, user.id)
+});
+//이 세션 데이터를 가진 사람을 db에서 찾아주세요 (마이페이지 접속시 발동)
+passport.deserializeUser(function(아이디, done){
+    db.collection('login').findOne({ id : 아이디}, function(에러, 결과){
+        done(null, 결과)
+    })
+});
+//---------------------------------------------------------------------------------------------------------------
+
+//detail 로 접속하면 detail.ejs보여줌
+app.get('/detail/:id', function(req,res){//detail/~로 get요청을 하면~
+    db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
+        console.log(result);
+        res.render('detail.ejs',{ data :result});
+    })
+    
+})
+
+
+// edit.ejs파일에 내가 접속한경로의 아이디를 찾은후 쏴준다 
+app.get('/edit/:id',function(req, res){
+    db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
+        console.log(result)
+        res.render('edit.ejs',{post:result})
+    })
+    
+})//put 요청을 하면, 요청.bodyid를 db에서 찾은후 제목과 날짜를 업데이트해준다
+app.put('/edit',function(요청,응답){
+    db.collection('post').updateOne({_id : parseInt(요청.body.id)},
+    { $set : {제목: 요청.body.title ,내용: 요청.body.descript}},function(에러, 결과){
+        console.log('수정완료')
+        응답.redirect('/list')
+    })
+});
