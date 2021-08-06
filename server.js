@@ -11,7 +11,6 @@ require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1
 app.use(methodOverride('_method'))//메소드 오버라이드2
 
-
 var db;
 MongoClient.connect(process.env.DB_URL,function(err, client){
     if(err) return console.log(err)
@@ -24,9 +23,11 @@ MongoClient.connect(process.env.DB_URL,function(err, client){
 app.get('/', function(req, res){
     res.render('homepage.ejs');
 });
+
 app.get('/install', function(req, res){
     res.render('install.ejs');
 });
+
 app.get('/list', function(req, res){
     db.collection('post').find().toArray(function(err,result){
         console.log(result);
@@ -37,33 +38,6 @@ app.get('/list', function(req, res){
 app.get('/write', function(req, res){
     res.render('write.ejs');
 });
-
-//어떤 사람이 /add 경로로 post요청을 하면 ~를 해주세요
-app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있음
-    res.render('homepage.ejs');//post기능을 사용하기 위해선 app.use(express.urlencoded({extended: true})) 삽입필요
-    db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
-        console.log(result.totalPost) // () -> 총게시물갯수
-        var 총게시물갯수 = result.totalPost;
-        db.collection('post').insertOne({_id : 총게시물갯수 +1, 제목 : req.body.title, 내용 : req.body.descript},function(err,result){
-            console.log('saved');
-            db.collection('counter').updateOne({name:'게시물갯수'},{ $inc : {totalPost:1}}, function(err,result){
-                if(err){return console.log(err)}
-                
-            })
-        })
-    })
-})
-
-
-//삭제 기능구현
-app.delete('/delete',function(req, res){
-    console.log(req.body);
-    req.body._id = parseInt(req.body._id);
-    db.collection('post').deleteOne(req.body,function(err, result){
-        console.log('delete succeed');
-        res.status(200).send({message:'succeed'});
-    })
-})
 
 //로긴 페이지 셋팅 -----------------------------------------------------------------------------------------------
 const passport = require('passport');
@@ -76,6 +50,7 @@ app.use(passport.session());
 app.get('/login',function(req, res){
     res.render('login.ejs')
 });
+
 app.post('/login', passport.authenticate('local',{
     failureRedirect : 'fail' //로긴 실패시 fail경로로 보내짐
 }), function(req, res){
@@ -86,6 +61,7 @@ app.get('/mypage', 로긴유무 ,function(req, res){//mypage에 접속하면 로
     console.log(req.user);
     res.render('mypage.ejs',{ 사용자: req.user})
 })
+
 function 로긴유무(req, res, next){
     if(req.user){
         next()//있다면 통과
@@ -112,17 +88,56 @@ passport.use(new LocalStrategy({
         }
     })
 }));
+
 // 세션유지
 // 세션을 저장시키는 코드(로그인 성공시 발동)
 passport.serializeUser(function(user, done){
     done(null, user.id)
 });
+
 //이 세션 데이터를 가진 사람을 db에서 찾아주세요 (마이페이지 접속시 발동)
 passport.deserializeUser(function(아이디, done){
     db.collection('login').findOne({ id : 아이디}, function(에러, 결과){
         done(null, 결과)
     })
 });
+
+// register로 post요청하면 db에 로그인 정보 추가
+app.post('/register', function(req,res){
+    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw}, function(err,result){
+        res.redirect('/')
+    })
+})
+
+//어떤 사람이 /add 경로로 post요청을 하면 ~를 해주세요
+app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있음
+    res.render('homepage.ejs');//post기능을 사용하기 위해선 app.use(express.urlencoded({extended: true})) 삽입필요
+    db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
+        console.log(result.totalPost) // () -> 총게시물갯수
+        var 총게시물갯수 = result.totalPost;
+        var saver = {_id : 총게시물갯수 +1, 작성자: req.user._id, 제목 : req.body.title, 내용 : req.body.descript}
+        db.collection('post').insertOne(saver,function(err,result){
+            console.log('saved');
+            db.collection('counter').updateOne({name:'게시물갯수'},{ $inc : {totalPost:1}}, function(err,result){
+                if(err){return console.log(err)}
+                
+            })
+        })
+    })
+})
+
+//삭제 기능구현
+app.delete('/delete',function(req, res){
+    console.log(req.body);
+    req.body._id = parseInt(req.body._id);
+    var deldata = {_id: req.body._id, 작성자: req.user._id}
+    db.collection('post').deleteOne(deldata,function(err, result){
+        console.log('delete succeed');
+        if(err) {console.log(err)}
+        res.status(200).send({message:'succeed'});
+    })
+})
+
 //---------------------------------------------------------------------------------------------------------------
 
 //detail 로 접속하면 detail.ejs보여줌
@@ -134,7 +149,6 @@ app.get('/detail/:id', function(req,res){//detail/~로 get요청을 하면~
     
 })
 
-
 // edit.ejs파일에 내가 접속한경로의 아이디를 찾은후 쏴준다 
 app.get('/edit/:id',function(req, res){
     db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
@@ -143,6 +157,7 @@ app.get('/edit/:id',function(req, res){
     })
     
 })//put 요청을 하면, 요청.bodyid를 db에서 찾은후 제목과 날짜를 업데이트해준다
+
 app.put('/edit',function(요청,응답){
     db.collection('post').updateOne({_id : parseInt(요청.body.id)},
     { $set : {제목: 요청.body.title ,내용: 요청.body.descript}},function(에러, 결과){
