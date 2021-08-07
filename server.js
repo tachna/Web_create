@@ -10,12 +10,13 @@ app.use('/uploads', express.static('uploads'));
 require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1
 app.use(methodOverride('_method'))//메소드 오버라이드2
+let multer = require('multer'); //multer라이브러리 사용
 
 var db;
 MongoClient.connect(process.env.DB_URL,function(err, client){
     if(err) return console.log(err)
     db = client.db('p-db');
-    app.listen(process.env  .PORT,function(){
+    app.listen(process.env.PORT,function(){
         console.log('listening on 3000')
     });
 })
@@ -32,6 +33,7 @@ app.get('/list', function(req, res){
     db.collection('post').find().toArray(function(err,result){
         console.log(result);
         res.render('list.ejs', { posts : result});
+    
     });
 });
 
@@ -39,6 +41,28 @@ app.get('/write', function(req, res){
     res.render('write.ejs');
 });
 
+// 파일저장, 램에다가 저장해주세요--------------------------------------------------------------------------------
+var storage = multer.diskStorage({
+    destination : function(req, file, cb){
+        cb(null, './public/image')
+    },
+    filename : function(req, file, cb){
+        cb(null, file.originalname)
+    }
+}); 
+var upload = multer({storage : storage});
+
+app.get('/upload', function(req,res){//이미지저장
+    res.render('upload.ejs')
+})
+
+app.post('/upload', upload.single('profile'), function(req, res){
+    res.send('succeed')
+});
+
+// app.get('/image/:이미지이름', function(req,res){
+//     res.sendFile(__dirname+'/public/image/'+res.params.이미지이름)
+// })
 //로긴 페이지 셋팅 -----------------------------------------------------------------------------------------------
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -115,7 +139,7 @@ app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있�
     db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
         console.log(result.totalPost) // () -> 총게시물갯수
         var 총게시물갯수 = result.totalPost;
-        var saver = {_id : 총게시물갯수 +1, 작성자: req.user._id, 제목 : req.body.title, 내용 : req.body.descript}
+        var saver = {_id : 총게시물갯수 +1, 작성자num: req.user._id, 제목 : req.body.title, 내용 : req.body.descript}
         db.collection('post').insertOne(saver,function(err,result){
             console.log('saved');
             db.collection('counter').updateOne({name:'게시물갯수'},{ $inc : {totalPost:1}}, function(err,result){
@@ -130,7 +154,7 @@ app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있�
 app.delete('/delete',function(req, res){
     console.log(req.body);
     req.body._id = parseInt(req.body._id);
-    var deldata = {_id: req.body._id, 작성자: req.user._id}
+    var deldata = {_id: req.body._id, 작성자num: req.user._id}
     db.collection('post').deleteOne(deldata,function(err, result){
         console.log('delete succeed');
         if(err) {console.log(err)}
