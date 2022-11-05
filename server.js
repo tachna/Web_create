@@ -5,7 +5,7 @@ const app = express();
 app.use(express.urlencoded({extended: true})) //post요청을 위해
 const MongoClient = require('mongodb').MongoClient;//mongodb 사용
 app.set('view engine', 'ejs'); //ejs 사용 헤더
-app.use('/public', express.static('public')) //미들웨어, public폴더를 사용할것이다 (css파일관련)
+app.use('/public', express.static('public')) //미들웨어, public폴더를 사용 (css파일관련)
 app.use('/uploads', express.static('uploads'));
 require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1
@@ -22,24 +22,25 @@ MongoClient.connect(process.env.DB_URL,function(err, client){
 })
 
 app.get('/', function(req, res){
-    res.render('homepage.ejs');
+    res.render('homepage.ejs');//res.sendFile(__dirname+'/~.html)
 });
 
 app.get('/install', function(req, res){
     res.render('install.ejs');
 });
 
-app.get('/list', function(req, res){
-    db.collection('post').find().toArray(function(err,result){
-        console.log(result);
-        res.render('list.ejs', { posts : result});
-    
-    });
+app.get('/index', function(req, res){
+    res.render('check-email.ejs');
+});
+app.use('/',require('./routes/index.js'));//이메일 라우트 사용
+
+app.get('/makeid', function(req, res){
+    res.render('makeid.ejs');
 });
 
-app.get('/write', function(req, res){
-    res.render('write.ejs');
-});
+
+
+
 
 // 파일저장, 램에다가 저장해주세요--------------------------------------------------------------------------------
 var storage = multer.diskStorage({
@@ -74,18 +75,40 @@ app.use(passport.session());
 app.get('/login',function(req, res){
     res.render('login.ejs')
 });
-
+//------------------------------------------------------------------------newpage
 app.post('/login', passport.authenticate('local',{
     failureRedirect : 'fail' //로긴 실패시 fail경로로 보내짐
 }), function(req, res){
-    res.redirect('/') //로긴 성공시 '/' 로 보내짐
+    res.redirect('/newpage') //로긴 성공시 '/' 로 보내짐
 });
 
+app.get('/newpage', 로긴유무 ,function(req, res){//mypage에 접속하면 로긴유무 함수 발동
+    console.log(req.user);
+    res.render('newpage.ejs',{ user: req.user})
+})
+//------------------------------------------------------------------------
 app.get('/mypage', 로긴유무 ,function(req, res){//mypage에 접속하면 로긴유무 함수 발동
     console.log(req.user);
-    res.render('mypage.ejs',{ 사용자: req.user})
+    res.render('mypage.ejs',{ user: req.user})
 })
 
+app.get('/write', 로긴유무, function(req, res){
+    res.render('write.ejs');    
+});
+
+app.get('/list', 로긴유무2, function(req, res){
+    db.collection('post').find().toArray(function(err,result){
+        console.log(result);
+        res.render('list.ejs', { posts : result});
+    });
+});
+app.get('/detail/:id', 로긴유무3, function(req,res){//detail/~로 get요청을 하면~
+    db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
+        console.log(result);
+        res.render('detail.ejs',{ data :result});
+    })
+    
+})
 function 로긴유무(req, res, next){
     if(req.user){
         next()//있다면 통과
@@ -93,7 +116,26 @@ function 로긴유무(req, res, next){
         res.render('login.ejs');
     }
 }
-
+function 로긴유무2(req, res, next){//로그인을 하지않을시
+    if(req.user){
+        next()//있다면 통과
+    }else{
+        db.collection('post').find().toArray(function(err,result){
+            console.log(result);
+            res.render('list-nologin.ejs', { posts : result});
+        });
+    }
+}
+function 로긴유무3(req, res, next){//로그인을 하지않을시detail
+    if(req.user){
+        next()//있다면 통과
+    }else{
+        db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
+            console.log(result);
+            res.render('detail-nologin.ejs',{ data   :result});
+        })
+    }
+}
 //localstrategy인증방식
 passport.use(new LocalStrategy({ 
     usernameField: 'id',
@@ -128,7 +170,7 @@ passport.deserializeUser(function(아이디, done){
 
 // register로 post요청하면 db에 로그인 정보 추가
 app.post('/register', function(req,res){
-    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw}, function(err,result){
+    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id}, function(err,result){
         res.redirect('/')
     })
 })
@@ -139,7 +181,7 @@ app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있�
     db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
         console.log(result.totalPost) // () -> 총게시물갯수
         var 총게시물갯수 = result.totalPost;
-        var saver = {_id : 총게시물갯수 +1, 작성자num: req.user._id, 제목 : req.body.title, 내용 : req.body.descript}
+        var saver = {_id : 총게시물갯수 +1, id: req.user.id, 제목 : req.body.title, 내용 : req.body.descript}
         db.collection('post').insertOne(saver,function(err,result){
             console.log('saved');
             db.collection('counter').updateOne({name:'게시물갯수'},{ $inc : {totalPost:1}}, function(err,result){
@@ -154,24 +196,29 @@ app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있�
 app.delete('/delete',function(req, res){
     console.log(req.body);
     req.body._id = parseInt(req.body._id);
-    var deldata = {_id: req.body._id, 작성자num: req.user._id}
-    db.collection('post').deleteOne(deldata,function(err, result){
+    if(req.user._id=="manager"){
+        var deldata = {_id: req.body._id}
+        db.collection('post').deleteOne(deldata,function(err, result){
+        console.log('delete succeed');
+        if(err) {console.log(err)}
+        res.status(200).send({message:'succeed'});
+        })
+    }
+    else{
+        var deldata = {_id: req.body._id, id: req.user._id}
+        db.collection('post').deleteOne(deldata,function(err, result){
         console.log('delete succeed');
         if(err) {console.log(err)}
         res.status(200).send({message:'succeed'});
     })
+    }
+    
 })
 
 //---------------------------------------------------------------------------------------------------------------
 
 //detail 로 접속하면 detail.ejs보여줌
-app.get('/detail/:id', function(req,res){//detail/~로 get요청을 하면~
-    db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
-        console.log(result);
-        res.render('detail.ejs',{ data :result});
-    })
-    
-})
+
 
 // edit.ejs파일에 내가 접속한경로의 아이디를 찾은후 쏴준다 
 app.get('/edit/:id',function(req, res){
@@ -189,3 +236,29 @@ app.put('/edit',function(요청,응답){
         응답.redirect('/list')
     })
 });
+//---------------------------------------------------------------------------------------------------------------
+
+//검색
+app.get('/search',(요청,응답) => {//검색엔진 mongodb에서 텍스트 인덱싱을 해주어야함
+    var 검색조건 = [
+        {
+          $search: {
+            index: 'titleSearch',
+            text: {
+              query: 요청.query.value,
+              path: ['제목', '내용']//'제목'  // 제목날짜 둘다 찾고 싶으면 ['제목', '날짜']
+            }
+          }
+        },
+        //{ $sort: { _id : -1}},  //아이디순으로 정렬되서 출력
+        { $limit: 10 }, // 10개만 검색가능
+        //{$project : {제목: 1. _id:0, score:{$meta: "searchSCore"}}}  검색결과에서 필터링하기
+    ] 
+    db.collection('post').aggregate(검색조건).toArray((에러, 결과)=>{
+        console.log(결과)   
+        응답.render('search.ejs', {posts : 결과})
+    })
+})
+
+
+//---------------------------------------------------------------------------------------------------------------
