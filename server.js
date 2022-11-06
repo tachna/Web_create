@@ -6,6 +6,7 @@ app.use(express.urlencoded({extended: true})) //post요청을 위해
 const MongoClient = require('mongodb').MongoClient;//mongodb 사용
 app.set('view engine', 'ejs'); //ejs 사용 헤더
 app.use('/public', express.static('public')) //미들웨어, public폴더를 사용 (css파일관련)
+app.use(express.static('views')); //사진
 app.use('/uploads', express.static('uploads'));
 require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1

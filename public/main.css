@@ -1,137 +1,254 @@
-div{
-    height:auto;
+* {
+    box-sizing: border-box;
 }
-h1,		
-h1+p {
-	margin: 30px 15px 0;
-	font-weight: 300;
+body {
+    margin: 0;
 }
-h1+p a {
-	color: #333;
+a {
+    color: black;
+    text-decoration: none;
 }
-h1+p a:hover {
-	text-decoration: none;
+.navbar a,
+#toolbar a {
+    color: white;
+    white-space: nowrap;
 }
-h2 {
-	margin: 60px 15px 0;
-	padding: 0;
-	font-weight: 300;
+
+/* 냅바 */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
 }
-h2 span {
-	margin-left: 1em;
-	color: #aaa;
-	font-size: 85%;
+
+.top-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 }
-.column {
-	margin: 15px 15px 0;
-	padding: 0;
+
+.bottom-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
-.column:last-child {
-	padding-bottom: 60px;
-}
-.column::after {
-	content: '';
-	clear: both;
-	display: block;
-}
-.column div {
-	position: relative;
-	float: left;
-	width: 300px;
-	height: 200px;
-	margin: 0 0 0 25px;
-	padding: 0;
-}
-.column div:first-child {
-	margin-left: 0;
-}
-.column div span {
-	position: absolute;
-	bottom: -20px;
-	left: 0;
-	z-index: -1;
-	display: block;
-	width: 300px;
-	margin: 0;
-	padding: 0;
-	color: #444;
-	font-size: 18px;
-	text-decoration: none;
-	text-align: center;
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-	opacity: 0;
-}
-figure {
-	width: 300px;
-	height: 200px;
-	margin: 0;
-	padding: 0;
-	background: #fff;
-	overflow: hidden;
-}
-figure:hover+span {
-	bottom: -36px;
-	opacity: 1;
+
+.top-nav pre {
+    color: white;
+    margin-right: 100px;
 }
 
 
-
-/* Zoom In #1 */
-.hover01 figure img {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-}
-.hover01 figure:hover img {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
+.logo {
+    font-size: large;
+    margin: auto;
+    padding: 5px;
+    margin-bottom: 20px;
 }
 
-/* Zoom In #2 */
-.hover02 figure img {
-	width: 300px;
-	height: auto;
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+.menu {
+    margin: auto;
+    display: flex;
 }
-.hover02 figure:hover img {
-	width: 350px;
+
+.menu li {
+    padding: 10px 15px;
+    margin-left: 35px;
+    list-style-type: none;
+    white-space: nowrap;
+}
+/* 연꽃 나오는 메인 이미지 */
+.mainSlide {
+    background-image: url("mainslide_01.jpg");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size:100% 100%;
+    width: 100%;
+    height:0;
+    padding: 35% 0;
+    margin: 0;
+}
+/* 인기여행지 TOP3 */
+.topPlace {
+    background-color: beige;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: auto;
 }
 
 
-
-/* Shine */
-.hover14 figure {
-	position: relative;
-}
-.hover14 figure::before {
-	position: absolute;
-	top: 0;
-	left: -75%;
-	z-index: 2;
-	display: block;
-	content: '';
-	width: 50%;
-	height: 100%;
-	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-	-webkit-transform: skewX(-25deg);
-	transform: skewX(-25deg);
-}
-.hover14 figure:hover::before {
-	-webkit-animation: shine .75s;
-	animation: shine .75s;
-}
-@-webkit-keyframes shine {
-	100% {
-		left: 125%;
-	}
-}
-@keyframes shine {
-	100% {
-		left: 125%;
-	}
+.bottom {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
+/* 사이드메뉴 */
+#toolbar{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    list-style-type: none;
+    font-size: 15px;
+    right: 5px;
+    top: 250px;
+    padding: 0;
+}
+
+#toolbar li {
+    background-color: rgba(35, 35, 50, 0.9);
+    display: inline-block;
+    padding: 15px 20px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+}
+
+#toolbar :hover {
+    background-color: rgba(255, 252, 252, 0.3);
+    display: inline-block;
+    padding: 15px 20px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+}
+
+/* 다시 찾는 인기 여행지 TOP3 */
+h1 {
+    padding: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 200;
+    color: rgb(0, 0, 0)
+}
+
+.picture_box {
+    text-align: center;
+    overflow: hidden;
+    width: 32%;
+    margin: 0 10px 40px 10px;
+}
+
+.picture_box img{
+    border-radius: 5px;
+    width: 100%;
+}
+
+.consult {
+    display: flex;
+    height: 200px;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+}
+
+.consult__box {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 300px;
+    margin-right: 20px;
+    border: 2px solid white;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.consult__box img {
+    margin-right: 20px;
+}
+
+.consult__box h2 {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.notice {
+    width: 30%;
+}
+
+.notice h3 {
+    padding-left: 20px;
+    font-size: 25px;
+}
+
+.notice__list li span {
+    color: rgb(10, 10, 10);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+footer {
+    margin: 10;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.info_list {
+    width:80%;
+    padding: 0;
+}
+
+.info_list li {
+    display: block;
+    white-space: nowrap;
+    list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info_list li:nth-child(3) {
+    float: left;
+}
+
+.info_list li:nth-child(4) {
+    float: left;
+}
+
+.info_list li:nth-child(5) {
+    float: left;
+}
+
+.info_list li:nth-child(6) {
+    float: left;
+}
+
+.image_box {
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+}
+
+.image_box img {
+    margin: 10px;
+}
+.button{
+    display:flex;
+    justify-content: space-evenly;
+    background-color: rgba(26, 26, 37, 0.9);
+    height: 60px;
+    align-items: center;
+    padding: 0;
+}
+
+.button li{
+    font-size: 20px;
+    list-style-type: none;
+    color: rgb(100, 100 , 100);
+}
+
+.button li a{
+    color:white;
+    font-weight:500;
+}
