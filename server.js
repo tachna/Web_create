@@ -161,7 +161,12 @@ passport.use(new LocalStrategy({
 passport.serializeUser(function(user, done){
     done(null, user.id)
 });
-
+app.get('/logout', function(req,res){
+    req.logout();
+  res.clearCookie('connect.sid');
+  res.redirect('/');
+  });
+  
 //이 세션 데이터를 가진 사람을 db에서 찾아주세요 (마이페이지 접속시 발동)
 passport.deserializeUser(function(아이디, done){
     db.collection('login').findOne({ id : 아이디}, function(에러, 결과){
