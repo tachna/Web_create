@@ -4,4 +4,16 @@ body {
     background-color: rgb(255,255,255);
   }
 
- 
+  .blank {
+    padding: 20px;
+  }
+  .navbar a {
+    
+    white-space: nowrap;
+}
+
+
+#toolbar a {
+    color: white;
+    white-space: nowrap;
+}
