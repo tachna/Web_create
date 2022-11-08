@@ -156,7 +156,7 @@ passport.use(new LocalStrategy({
     })
 }));
 
-// 세션유지check
+// 세션유지
 // 세션을 저장시키는 코드(로그인 성공시 발동)
 passport.serializeUser(function(user, done){
     done(null, user.id)
