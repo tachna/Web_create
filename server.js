@@ -110,6 +110,7 @@ app.get('/detail/:id', 로긴유무3, function(req,res){//detail/~로 get요청�
     })
     
 })
+//------------------------------------------------------------------------
 function 로긴유무(req, res, next){
     if(req.user){
         next()//있다면 통과
@@ -137,6 +138,17 @@ function 로긴유무3(req, res, next){//로그인을 하지않을시detail
         })
     }
 }
+function 로긴유무4(req, res, next){//로그인을 하지않을시detail
+    if(req.user){
+        next()//있다면 통과
+    }else{
+        db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
+            console.log(result);
+            res.render('detail-nologin.ejs',{ data   :result});
+        })
+    }
+}
+//------------------------------------------------------------------------
 //localstrategy인증방식
 passport.use(new LocalStrategy({ 
     usernameField: 'id',
@@ -252,7 +264,7 @@ app.get('/search',(요청,응답) => {//검색엔진 mongodb에서 텍스트 인
             index: 'titleSearch',
             text: {
               query: 요청.query.value,
-              path: ['제목', '내용']//'제목'  // 제목날짜 둘다 찾고 싶으면 ['제목', '날짜']
+              path: '제목'//'제목'  // 제목날짜 둘다 찾고 싶으면 ['제목', '날짜']
             }
           }
         },
