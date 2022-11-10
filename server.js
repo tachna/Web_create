@@ -38,7 +38,9 @@ app.use('/',require('./routes/index.js'));//이메일 라우트 사용
 app.get('/makeid', function(req, res){
     res.render('makeid.ejs');
 });
-
+app.get('/editmypage', function(req, res){
+    res.render('editmypage.ejs');
+});
 
 
 
@@ -138,16 +140,7 @@ function 로긴유무3(req, res, next){//로그인을 하지않을시detail
         })
     }
 }
-function 로긴유무4(req, res, next){//로그인을 하지않을시detail
-    if(req.user){
-        next()//있다면 통과
-    }else{
-        db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
-            console.log(result);
-            res.render('detail-nologin.ejs',{ data   :result});
-        })
-    }
-}
+
 //------------------------------------------------------------------------
 //localstrategy인증방식
 passport.use(new LocalStrategy({ 
@@ -173,6 +166,7 @@ passport.use(new LocalStrategy({
 passport.serializeUser(function(user, done){
     done(null, user.id)
 });
+
 app.get('/logout', function(req,res){
     req.logout();
   res.clearCookie('connect.sid');
@@ -252,6 +246,15 @@ app.put('/edit',function(요청,응답){
     { $set : {제목: 요청.body.title ,내용: 요청.body.descript}},function(에러, 결과){
         console.log('수정완료')
         응답.redirect('/list')
+    })
+});
+//---------------------------------------------------------------------------------------------------------------
+
+app.put('/editmypage',function(요청,응답){
+    db.collection('login').updateOne({_id : 요청.user._id},
+    { $set : {id: 요청.body.identi ,pw: 요청.body.password}},function(에러, 결과){
+        console.log('수정완료')
+        응답.redirect('/newpage')
     })
 });
 //---------------------------------------------------------------------------------------------------------------
