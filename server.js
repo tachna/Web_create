@@ -182,7 +182,7 @@ passport.deserializeUser(function(아이디, done){
 
 // register로 post요청하면 db에 로그인 정보 추가
 app.post('/register', function(req,res){
-    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id}, function(err,result){
+    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email}, function(err,result){
         res.redirect('/login')
     })
 })
