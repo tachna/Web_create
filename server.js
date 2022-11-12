@@ -182,7 +182,8 @@ passport.deserializeUser(function(아이디, done){
 
 // register로 post요청하면 db에 로그인 정보 추가
 app.post('/register', function(req,res){
-    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id}, function(err,result){
+    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email
+    }, function(err,result){
         res.redirect('/login')
     })
 })
@@ -252,7 +253,7 @@ app.put('/edit',function(요청,응답){
 
 app.put('/editmypage',function(요청,응답){
     db.collection('login').updateOne({_id : 요청.user._id},
-    { $set : {id: 요청.body.identi ,pw: 요청.body.password}},function(에러, 결과){
+    { $set : {id: 요청.body.identi, pw: 요청.body.password, born: 요청.body.born, sex: 요청.body.sex, address: 요청.body.address, number: 요청.body.number, email: 요청.body.email}},function(에러, 결과){
         console.log('수정완료')
         응답.redirect('/newpage')
     })
