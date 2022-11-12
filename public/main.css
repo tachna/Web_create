@@ -65,8 +65,8 @@ a {
     white-space: nowrap;
 }
 /* 연꽃 나오는 메인 이미지 */
-.mainSlide {
-    background-image: url("여행사진.webp");
+#mainSlide {
+    background-image: url('mainslide_01.jpg');
     background-repeat: no-repeat;
     background-attachment: contain;
     background-size:100% 100%;
