@@ -220,7 +220,7 @@ app.delete('/delete',function(req, res){
         })
     }
     else{
-        var deldata = {_id: req.body._id, id: req.user._id}
+        var deldata = {_id: req.body._id}
         db.collection('post').deleteOne(deldata,function(err, result){
         console.log('delete succeed');
         if(err) {console.log(err)}
