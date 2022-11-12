@@ -38,8 +38,32 @@
 				</div>
 				<div class="card-body pt-5">
 					<img src="/public/spon.jpg" alt="profile-image" class="profile"/>
-					<h5 class="card-title"><%= user.id %></h5>
-					<p class="card-text">Welcome to Webprogramming project. if you want to change your account, click under the button</p>
+                    <table >
+                        <tr>
+                            <td>이름&nbsp;&nbsp;&nbsp;</td>
+                            <td> <h5 class="card-title"><%= user.id %></h5></td>
+                        </tr>
+                        <tr>
+                            <td>생년월일&nbsp;&nbsp;&nbsp;</td>
+                            <td><h5 class="card-title"><%= user.born %></h5></td>
+                        </tr>
+                        <tr>
+                            <td>성별&nbsp;&nbsp;&nbsp;</td>
+                            <td><h5 class="card-title"><%= user.sex %></h5></td>
+                        </tr>
+                        <tr>
+                            <td>주소&nbsp;&nbsp;&nbsp;</td>
+                            <td><h5 class="card-title"><%= user.address %></h5></td>
+                        </tr>
+                        <tr>
+                            <td>전화번호&nbsp;&nbsp;&nbsp;</td>
+                            <td> <h5 class="card-title"><%= user.number %></td>
+                        </tr>
+                        <tr>
+                            <td>이메일&nbsp;&nbsp;&nbsp;</td>
+                            <td><h5 class="card-title"><%= user.email %></td>
+                        </tr>
+                        </table>
           <a href="/logout">로그아웃</a> | <a href="/editmypage">개인정보수정</a>
 				</div>
 			</div>
