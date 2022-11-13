@@ -196,7 +196,7 @@ app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있�
     db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
         console.log(result.totalPost) // () -> 총게시물갯수
         var 총게시물갯수 = result.totalPost;
-        var saver = {_id : 총게시물갯수 +1, id: req.user.id, 제목 : req.body.title, 내용 : req.body.descript}
+        var saver = {serial_number : req.user._id,_id : 총게시물갯수 +1, id: req.user.id, 제목 : req.body.title, 내용 : req.body.descript}
         db.collection('post').insertOne(saver,function(err,result){
             console.log('saved');
             db.collection('counter').updateOne({name:'게시물갯수'},{ $inc : {totalPost:1}}, function(err,result){
@@ -220,7 +220,7 @@ app.delete('/delete',function(req, res){
         })
     }
     else{
-        var deldata = {_id: req.body._id}
+        var deldata = {_id: req.body._id, serial_number:req.user._id}
         db.collection('post').deleteOne(deldata,function(err, result){
         console.log('delete succeed');
         if(err) {console.log(err)}
