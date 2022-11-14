@@ -54,7 +54,7 @@
 
             function startAnimation()
             {
-                obTimeOut = window.setTimeout(ShowDefaultRotate,500); // 윈도우 로드 후 0.1초 후에 반복함수를 호출합니다.
+                obTimeOut = window.setTimeout(ShowDefaultRotate,500); // 윈도우 로드 후 0.5초 후에 반복함수를 호출합니다.
             }
 
             window.onload = startAnimation; // 윈도우 로드시 이미지 변환함수 실행
@@ -65,7 +65,7 @@
         </div>
 
         <div class="topPlace">
-            <div class="picture_box">
+            <div class="picture_box" href="#pop_info_1">
                 <img src="images/img_topplace01.jpg">
                 <h3>성패트릭 성당</h3>
                 <p>바쁜 뉴욕 안에서 정교하면서도<br>웅장한 가운데 침묵하게되는 기도의<br>시간!</p>
@@ -75,9 +75,15 @@
                         <h3>VIEW</h3>
                     </div>
                 </a>
+                <div id="pop_info_1" class="pop_wrap" style="display:none;">
+                    <div class="pop_inner">
+                        <button type="button" class="btn_close">X</button>
+                        <img src="images/img_topplace01.jpg">
+                    </div>
+                </div>
             </div>
 
-            <div class="picture_box">
+            <div class="picture_box" href="#pop_info_2">
                 <img src="images/img_topplace02.jpg">
                 <h3>원주 뮤지엄 '산'</h3>
                 <p>전시된 유산들을 담아낸 건물에<br>신비로운 들과 물의 테마가 담겨<br>있다.</p>
@@ -87,9 +93,15 @@
                         <h3>VIEW</h3>
                     </div>
                 </a>
+                <div id="pop_info_2" class="pop_wrap" style="display:none;">
+                    <div class="pop_inner">
+                        <button type="button" class="btn_close">X</button>
+                        <img src="images/img_topplace02.jpg">
+                    </div>
+                </div>
             </div>
 
-            <div class="picture_box">
+            <div class="picture_box" href="#pop_info_3">
                 <img src="images/img_topplace03.jpg">
                 <h3>일본 만국박람회 기념공원</h3>
                 <p>오사카 센리 반파쿠에는 드넓은<br>대지에 정원과 들, 물과 함께 하는<br>문화가 있다.</p>
@@ -99,8 +111,35 @@
                         <h3>VIEW</h3>
                     </div>
                 </a>
+                <div id="pop_info_3" class="pop_wrap" style="display:none;">
+                    <div class="pop_inner">
+                        <button type="button" class="btn_close">X</button>
+                        <img src="images/img_topplace03.jpg">
+                    </div>
+                </div>
             </div>
         </div>
+
+        <script>
+            var target = document.querySelectorAll('.picture_box');
+            var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
+            var targetID;
+
+            // 팝업 열기
+            for(var i = 0; i < target.length; i++){
+                target[i].addEventListener('click', function(){
+                    targetID = this.getAttribute('href');
+                    document.querySelector(targetID).style.display = 'block';
+                });
+            }
+
+            // 팝업 닫기
+            for(var j = 0; j < target.length; j++){
+                btnPopClose[j].addEventListener('click', function(){
+                    this.parentNode.parentNode.style.display = 'none';
+                });
+            }
+        </script>
 
         <div class="bottom">
             <div class="consult">
