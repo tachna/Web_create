@@ -105,6 +105,7 @@ app.get('/list', 로긴유무2, function(req, res){
         res.render('list.ejs', { posts : result});
     });
 });
+
 app.get('/detail/:id', 로긴유무3, function(req,res){//detail/~로 get요청을 하면~
     db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
         console.log(result);

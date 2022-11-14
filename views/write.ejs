@@ -36,15 +36,16 @@
               <div class="form-group">
                 <textarea class="form-control" placeholder="Question Description" v-model="event.description" name="descript"></textarea>
               </div>
-      
-             
+              <form action="/upload"></form>
+                파일 : <input type="file" name="proFile" /> 
+              </form>
               <button class="btn btn-primary" v-on:click="addEvent">Submit</button>
             
             </div>
           </form> 
           </div>
         </div>
-
+        
 
 
       
