@@ -1,224 +1,260 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="/public/main.css">
-        <link rel ="stylesheet" href="mobile.css" media="screen and (max-width : 767px)">
-        <link rel ="stylesheet" href="tablet.css" media="screen and (min-width : 768px) and (max-width):959px)">
-        <link rel ="stylesheet" href="desktop.css" media="screen and (max-width : 960px)">
-    </head>
+<head>
+	<title> 투어리스트인투어 </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+	<link rel="stylesheet" href="/public/css/slick.css">
+	<link rel="stylesheet" href="/public/css/animate.css">
+	<link rel="stylesheet" href="/public/css/common.css">
+	<link rel="stylesheet" href="/public/css/rwd.css">
+	<script src="/public/js/jquery-1.12.4.min.js"></script>
+	<script src="/public/js/jquery-migrate-1.4.1.min.js"></script>
+	<script src="/public/js/slick.min.js"></script>
+	<!--[if lte IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/prefixfree.min.js"></script>
+<![endif]-->
+</head>
 
-    <body>
-        <%- include('nav.html') %>
-        
-        <ul id="toolbar">
-            <li><a href="">전화문의<br>010-1234-5678</a></li>
-            <li><a href="">카카오톡<br>1:1상담</a></li>
-            <li><a href="">오시는 길</a></li>
-            <li><a href=""> ▲<br>TOP</a></li>
-        </ul>
+<body>
+	<div class="loadingAni">
+		<i class="fas fa-spinner fa-spin"></i>
+	</div>
+	<div id="wrap">
 
-        <div class="mainSlide"></div>
+		<div class="skipnav"><a href="#container">본문 바로가기</a></div>
 
-        <script>
-            var obTimeOut; // clearTimeout() 함수를 이용하여 Timeout 을 취소하기위해 사용됨
+		<header id="header" class="">
+			<div class="header_area row cf">
+				<h1><a href="index.html">Tourist in tour</a></h1>
+				<p class="openMOgnb">
+					<a href="#none">
+						<strong class="blind">메뉴열기</strong>
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
+				</p>
+				<div class="header_cont">
+					<ul class="util">
+						<li><a href="/login">로그인</a></li>
+						<li><a href="/makeid">회원가입</a></li>
+					</ul>
+					<nav>
+						<ul class="depth1"> 
+							<li><a href="#" class="openAll1">여행정보</a>
+								<div class="dep2box">
+								<ul class="depth2 row">
+									<li><a href="#">국내</a></li>
+									<li><a href="#">해외</a></li>
+								</ul>
+							</div>
+							</li>
+							<li><a href="#" class="openAll2">고객센터</a>
+								<div class="dep2box">
+								<ul class="depth2 row">
+									<li><a href="/list">공지사항</a></li>
+									<li><a href="/write">문의하기</a></li>
+								</ul>
+							</div>
+							</li>
+							<li><a href="#" class="openAll3">상품투어</a>
+								<div class="dep2box">
+								<ul class="depth2 row">
+									<li><a href="program.html">프로그램 소개</a></li>
+									<li><a href="#">여행자료</a></li>
+								</ul>
+							</div>
+							</li>
+							<li><a href="#" class="openAll4">티켓/가이드</a>
+								<div class="dep2box">
+								<ul class="depth2 row">
+									<li><a href="#">항공</a></li>
+									<li><a href="#">호텔</a></li>
+								</ul>
+								</div>
+							</li>
+						</ul>
+					</nav>
+					<p class="closeMOgnb">
+						<a href="#none">
+							<strong class="blind">메뉴닫기</strong>
+							<span></span>
+							<span></span>
+						</a>
+					</p>
+				</div>
+			</div>
+		</header>
 
-            var ObjectArray = new Array ();
-            ObjectArray[0] = "mainslide_01.jpg";
-            ObjectArray[1] = "spon.jpg";
-            ObjectArray[2] = "여행사진.webp";
+		<div id="container">
+			<div class="main_rolling_pc">
+				<div class="visualRoll">
+					<div class="slide slide1">
+						<div class="text">
+							<p>TRUST &amp; INFORMATION</p>
+							<p>믿을 수 있는 여행정보, 여행... 어디로 가세요?</p>
+							<p>BE TOURIST FOR BETTER LIFE</p>
+						</div>
+					</div>
+					<div class="slide slide2 slick-active">
+						<div class="text">
+							<p>TRUST &amp; INFORMATION</p>
+							<p>믿을 수 있는 여행정보, 여행... 어디로 가세요?</p>
+							<p>BE TOURIST FOR BETTER LIFE</p>
+						</div>
+					</div>
+					<div class="slide slide3">
+						<div class="text">
+							<p>TRUST &amp; INFORMATION</p>
+							<p>믿을 수 있는 여행정보, 여행... 어디로 가세요?</p>
+							<p>BE TOURIST FOR BETTER LIFE</p>
+						</div>
+					</div>
+			</div>
+			<button class="plpa"><i class="fas fa-pause"></i></button>
+		</div>
 
-            var nObjectCnt = 0;	
+		 <div class="multi_rolling row">
+			 <h2>GALLERY</h2>
+			 <div class="multi_visual">
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_08.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_12.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_08.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_12.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_08.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_12.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_08.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_12.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_08.jpg" alt=""></a></div>
+				 <div class="multi_slide"><a href="#none"><img src="/public/img/img_place_12.jpg" alt=""></a></div>
+			 </div>
+		 </div>
+			<div class="about_area">
+				<h2 class="row">다시 찾는 인기 여행지 <b>TOP 3</b></h2>
+				<div class="about_box">
+					<ul class="place_list row cf">
+						<li><a href="http://www.naver.com" data-src="/public/img/img_pop1_1.jpg">
+							<div class="imgbox">
+								<img class="img_topplace" src="/public/img/img_topplace01.jpg" alt="다리를 높이 들어 운동" />
+							</div>
+								<h3>성패트릭 대성당</h3>
+								<p class="txt">바쁜 뉴욕 안에서 정교하면서도 웅장한 기운에 침묵하게 되는 기도의 시간!</p>
+								<span class="view">VIEW</span>
+							</a>
+						</li>
+						<li><a href="http://www.daum.net" data-src="/public/img/img_pop2_1.jpg">
+							<div class="imgbox">
+								<img class="img_topplace" src="/public/img/img_topplace02.jpg" alt="바닷가에서 스트레칭" />
+						</div>
+								<h3>원주 뮤지엄 '산'</h3>
+								<p class="txt">전시된 유산들을 담아낸 건물에 신비로운 돌과 물의 테마가 담겨 있다.</p>
+								<span class="view">VIEW</span>
+							</a>
+						</li>
+						<li><a href="http://www.nate.com" data-src="/public/img/img_pop3_1.jpg">
+							<div class="imgbox">
+								<img class="img_topplace" src="/public/img/img_topplace03.jpg" alt="앉아서 스트레칭" />
+							</div>
+								<h3>일본 만국박람회 기념공원</h3>
+								<p class="txt">오사카 센리 반파쿠에는 드넓은 대지에 정원과 들, 물과 함께 하는 문화가 있다.</p>
+								<span class="view">VIEW</span>
+							</a>
+						</li>
+					</ul>
+					<div class="popupBox">
+                       <div class="inner">
+						   <h3></h3>
+						   <div>
+							   <a href="" target="_blank"><img src="" alt=""></a>
+						   </div>
+						   <p></p>
+						   <button class="close"><span class="blind">닫기</span><i class="fas fa-times-circle"></i></button>
+					       <button class="prev arrow"><i class="fas fa-angle-left"></i></button>
+                           <button class="next arrow"><i class="fas fa-angle-right"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-            let div = document.getElementsByClassName("mainSlide");
+			<div class="dgbox">
+				<div class="text row">
+                 <p>사회적 거리는 늘이고 마음의 거리는 좁히고</p>
+				 <p>5월 가족 여행의 모든 것 - 대한민국 구석구석에 완전정보</p>
+				</div>
+			</div>
 
-            function ShowDefaultRotate() // 스스로 자신을 호출하는 재귀함수 (Recursive Function)
-            {
-                if( nObjectCnt < ObjectArray.length )  // 배열의 갯수 이내일때만 실행
-                {
-                    var url = "url('" + "../public/" + ObjectArray[nObjectCnt] + "')";
-                    div[0].style.backgroundImage = url;
-                    nObjectCnt++;		 
-                    obTimeOut = setTimeout("ShowDefaultRotate()",2000);  // 2초후에 자기자신을 호출 
-                }
-                else
-                {
-                    nObjectCnt = 0;
-                    obTimeOut = setTimeout("ShowDefaultRotate()", 0);
-                    // clearTimeout(obTimeOut); // 배열의 갯수만큼 반복하여 변환시킨 후에는 Timeout 을 중지시킨다 
-                }
-            }
+			<div class="appbbs_area">
+				<div class="appbbs_box row cf">
+					<h2 class="blind">상담과 최근게시물</h2>
+					<p class="app_line">
+						<a href="javascript:;">카카오톡 1:1 상담</a>
+						<a href="javascript:;">전화 상담 신청</a>
+					</p>
+					<div class="bbs_line">
+						<h3>NOTICE</h3>
+						<ul class="notice_recent">
+							<li><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
+							<li><a href="javascript:;">박물관 미션 투어 응모 당첨자 발표</a></li>
+							<li><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>
+							<li><a href="javascript:;">하롱베이 서비스 OPEN! (여행정보, 가이드북, 가이드맵)</a></li>
+							<li><a href="javascript:;">투어리스트인투어 서비스 점검 안내</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 
-            function startAnimation()
-            {
-                obTimeOut = window.setTimeout(ShowDefaultRotate,500); // 윈도우 로드 후 0.5초 후에 반복함수를 호출합니다.
-            }
+		<div class="map row">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.9638464447075!2d126.92111270956563!3d37.55591556263036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c99e49f54b7d1%3A0xd65a08953f2db8cd!2z7ZmN64yA7J6F6rWs7JetOeuyiOy2nOq1rA!5e0!3m2!1sko!2skr!4v1591605808933!5m2!1sko!2skr" width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		</div>
 
-            window.onload = startAnimation; // 윈도우 로드시 이미지 변환함수 실행
-        </script>
+		<footer>
+			<div class="foot_area row">
+				<ul class="foot_list">
+					<li><a href="javascript:;">이용약관</a></li>
+					<li><a href="javascript:;">개인정보취급방침</a></li>
+				</ul>
+				<h2>투어리스트인투어</h2>
+				<p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>
+					<span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>
+						<span class="br_line">E-mail : <span class="space0"> titour@touristintour.com</span></span>
+					</span>
+				</p>
+				<p class="copy">Copyright(c) TouristInTour all right reserved</p>
+				<ul class="snslink">
+					<li><a href="javascript:;">blog</a></li>
+					<li><a href="javascript:;">facebook</a></li>
+					<li><a href="javascript:;">instargram</a></li>
+				</ul>
+			</div>
+		</footer>
 
-        <div class="title">
-            <h1>다시 찾는 인기 여행지 <b style="font-weight:bolder;">TOP 3</b></h1>
-        </div>
+	</div>
 
-        <div class="topPlace">
-            <div class="picture_box" href="#pop_info_1">
-                <img src="images/img_topplace01.jpg">
-                <h3>성패트릭 성당</h3>
-                <p>바쁜 뉴욕 안에서 정교하면서도<br>웅장한 가운데 침묵하게되는 기도의<br>시간!</p>
-                <a href="">
-                    <div>
-                        <h3>_______</h3>
-                        <h3>VIEW</h3>
-                    </div>
-                </a>
-            </div>
+	<h2 class="blind">빠른 링크 : 전화 문의,카카오톡,오시는 길,꼭대기로</h2>
+	<div class="quick_area">
+		<ul class="quick_list cf">
+			<li><a href="tel:010-7184-4403">
+					<h3>전화 문의</h3>
+					<p>010-1234-5678</p>
+				</a></li>
+			<li><a href="javascript:;">
+					<h3>카카오톡 <em>상담</em></h3>
+					<p>1:1상담</p>
+				</a></li>
+			<li><a href="javascript:;">
+					<h3 class="to_contact">오시는 길</h3>
+				</a></li>
+		</ul>
+		<p class="to_top"><a href="#none" class="s_point">TOP</a></p>
+	</div>
 
-            <div id="pop_info_1" class="pop_wrap" style="display:none;">
-                <div class="pop_inner">
-                    <button type="button" class="btn_close">X</button>
-                    <h5>성패트릭 성당</h5>
-                    <img src="images/img_topplace01.jpg">
-                    <p>바쁜 뉴욕 안에서 정교하면서도<br>웅장한 가운데 침묵하게되는 기도의<br>시간!</p>
-                </div>
-            </div>
-
-            <div class="picture_box" href="#pop_info_2">
-                <img src="images/img_topplace02.jpg">
-                <h3>원주 뮤지엄 '산'</h3>
-                <p>전시된 유산들을 담아낸 건물에<br>신비로운 들과 물의 테마가 담겨<br>있다.</p>
-                <a href="">
-                    <div>
-                        <h3>_______</h3>
-                        <h3>VIEW</h3>
-                    </div>
-                </a>
-            </div>
-
-            <div id="pop_info_2" class="pop_wrap" style="display:none;">
-                <div class="pop_inner">
-                    <button type="button" class="btn_close">X</button>
-                    <h5>원주 뮤지엄 '산'</h5>
-                    <img src="images/img_topplace02.jpg">
-                    <p>전시된 유산들을 담아낸 건물에<br>신비로운 들과 물의 테마가 담겨<br>있다.</p>
-                </div>
-            </div>
-
-            <div class="picture_box" href="#pop_info_3">
-                <img src="images/img_topplace03.jpg">
-                <h3>일본 만국박람회 기념공원</h3>
-                <p>오사카 센리 반파쿠에는 드넓은<br>대지에 정원과 들, 물과 함께 하는<br>문화가 있다.</p>
-                <a href="">
-                    <div>
-                        <h3>_______</h3>
-                        <h3>VIEW</h3>
-                    </div>
-                </a>
-            </div>
-
-            <div id="pop_info_3" class="pop_wrap" style="display:none;">
-                <div class="pop_inner">
-                    <button type="button" class="btn_close">X</button>
-                    <h5>일본 만국박람회 기념공원</h5>
-                    <img src="images/img_topplace03.jpg">
-                    <p>오사카 센리 반파쿠에는 드넓은<br>대지에 정원과 들, 물과 함께 하는<br>문화가 있다.</p>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            var target = document.querySelectorAll('.picture_box');
-            var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
-            var targetID;
-
-            // 팝업 열기
-            for(var i = 0; i < target.length; i++){ 
-                target[i].addEventListener('click', function(){
-                    targetID = this.getAttribute('href');
-                    document.querySelector(targetID).style.display = 'block';
-                });
-            }
-
-            // 팝업 닫기
-            for(var j = 0; j < target.length; j++){
-                btnPopClose[j].addEventListener('click', function(){
-                    this.parentNode.parentNode.style.display = 'none';
-                });
-            }
-        </script>
-
-        <div class="bottom">
-            <div class="consult">
-                <a>
-                <div class="consult__box">
-                    <img src="images/ico_kakao.png" width="50" height=50>
-                    <h2>카카오톡 1:1 상담</h2>
-                </div>
-                </a>
-                <a>
-                    <div class="consult__box">
-                        <img src="images/ico_phone.png" width="50" height="50">
-                        <h2>전화 상담 신청</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div class="notice">
-                <h3>NOTICE</h3>
-                <ul class="notice__list">
-                    <li><a href=""><span>이번 휴가 제주갈까? 미션 투어</span></a></li>
-                    <li><a href=""><span>박물관 미션 투어 응모 당첨자 발표</span> </a></li>
-                    <li><a href=""><span>추석 연휴 티켓/투어 배송 및 직접 수령</span></a></li>
-                    <li><a href=""><span>하롱베이 서비스 OPEN!{여행 정보, 가이드}</span></a></li>
-                    <li><a href=""><span>투어리스트인투어 서비스 점검 안내 </span></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-
-        <footer>
-            <ul class="info_list">
-                <h3><a href="">이용약관</a> | <a href="">개인정보취급방침</a></h3>
-                <li>투어리스트인투어</li>
-                <li>서울특별시 종로구 혜화동 9길 청문빌딩 5층</li>
-                <li><b>/</b></li>
-                <li>대표전화 02-1234-5678</li>
-                <li><b>/</b></li>
-                <li>E-mail:titour@touristInTour.com</li>
-                <li>Copyright(c) TouristInTour all right reserved</li>
-            </ul>
-            <div class="image_box">
-                <a href=""><img src="images/ico_blog_r.png" width=50></a>
-                <a href=""><img src="images/ico_face.png" width=50 style="padding-bottom:25px"></a>
-                <a href=""><img src="images/ico_instargram_r.png" width=50></a>
-            </div>
-        </footer>
-
-        <!-- 모바일기준 제작  -->
-        <ul class="button">
-            <li><a href="">전화문의</a></li>
-            <li>|</li>
-            <li><a href="">카카오톡 상담</a></li>
-            <li>|</li>
-            <li><a href="">오시는 길</a></li>
-        </ul>
-
-        <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    -->
-    <script type="text/javascript" src="practice.js"></script>
-    </body>
+<script src="/public/js/myscript.js"></script>
+</body>
 
 </html>
