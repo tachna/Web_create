@@ -6,7 +6,7 @@ app.use(express.urlencoded({extended: true})) //post요청을 위해
 const MongoClient = require('mongodb').MongoClient;//mongodb 사용
 app.set('view engine', 'ejs'); //ejs 사용 헤더
 app.use('/public', express.static('public')) //미들웨어, public폴더를 사용 (css파일관련)
-app.use(express.static('views')); //사진
+app.use(express.static('views')); //사진 
 app.use('/uploads', express.static('uploads'));
 require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1
@@ -184,10 +184,26 @@ passport.deserializeUser(function(아이디, done){
 });
 
 // register로 post요청하면 db에 로그인 정보 추가
-app.post('/register', function(req,res){
-    db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email, edomain: req.body.edomain, allow: req.body.allow
-    }, function(err,result){
-        res.redirect('/login')
+// app.post('/register', function(req,res){
+//     db.collection('login').insertOne({ id: req.body.id, pw: req.body.pw, _id: req.body.id, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email
+//     }, function(err,result){
+//         res.redirect('/login')
+//     })
+// })
+//어떤 사람이 /register 경로로 post요청을 하면 ~를 해주세요
+app.post('/register', function(req,res){//정보는 요청 부분에 저장되어있음
+    res.render('homepage.ejs');//post기능을 사용하기 위해선 app.use(express.urlencoded({extended: true})) 삽입필요
+    db.collection('counter2').findOne({name:'아이디갯수'}, function(err,result){
+        console.log(result.totalPost) // () -> 총게시물갯수
+        var 총게시물갯수 = result.totalPost;
+        var saver = { id: req.body.id, pw: req.body.pw, _id: 총게시물갯수 +1, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email}
+        db.collection('login').insertOne(saver,function(err,result){
+            console.log('saved');
+            db.collection('counter2').updateOne({name:'아이디갯수'},{ $inc : {totalPost:1}}, function(err,result){
+                if(err){return console.log(err)}
+                
+            })
+        })
     })
 })
 
