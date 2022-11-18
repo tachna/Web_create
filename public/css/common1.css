@@ -240,14 +240,14 @@ textarea::-webkit-input-placeholder {
 }
 .location_area {
   height: 445px;
-  background: url(../images/img_top2.jpg) no-repeat center bottom;
+  background: url(../img/img_top2.jpg) no-repeat center bottom;
   background-size: cover;
 }
 .location_area.member {
-  background-image: url(../images/img_top5.jpg);
+  background-image: url(../img/img_top5.jpg);
 }
 .location_area.package {
-  background-image: url(../images/img_top3.jpg);
+  background-image: url(../img/img_top3.jpg);
 }
 .location_area h2.tit_page {
   padding: 250px 0 0 0;
@@ -319,7 +319,7 @@ header > .header_area > h1 > a {
   display: block;
   width: 270px;
   height: 71px;
-  background: url(../images/logo.png) no-repeat;
+  background: url(../img/logo.png) no-repeat;
   text-indent: -9999px;
   overflow: hidden;
 }
@@ -428,12 +428,12 @@ header > .header_area > h1 > a {
   background-size: cover !important;
 }
 .viewImgList li.imgList0 {
-  background: url(../images/mainslide01.jpg) no-repeat center;
+  background: url(../img/mainslide01.jpg) no-repeat center;
   position: relative;
   z-index: 50;
 }
 .viewImgList li.imgList1 {
-  background: url(../images/mainslide02.jpg) no-repeat center;
+  background: url(../img/mainslide02.jpg) no-repeat center;
   position: absolute;
   top: 0;
   left: 0;
@@ -441,7 +441,7 @@ header > .header_area > h1 > a {
   z-index: 10;
 }
 .viewImgList li.imgList2 {
-  background: url(../images/mainslide03.jpg) no-repeat center;
+  background: url(../img/mainslide03.jpg) no-repeat center;
   position: absolute;
   top: 0;
   left: 0;
@@ -540,7 +540,7 @@ header > .header_area > h1 > a {
   box-sizing: border-box;
   padding: 45px 0;
   text-align: center;
-  background: url(../images/bg_app.jpg) no-repeat;
+  background: url(../img/bg_app.jpg) no-repeat;
   font-size: 0;
 }
 .appbbs_area > .appbbs_box > .app_line > a {
@@ -552,7 +552,7 @@ header > .header_area > h1 > a {
   box-sizing: border-box;
   padding-left: 75px;
   text-align: left;
-  background: rgba(0, 0, 0, 0.3) url(../images/ico_katalk.png) no-repeat 20px
+  background: rgba(0, 0, 0, 0.3) url(../img/ico_katalk.png) no-repeat 20px
     50%;
   margin-right: 10px;
   font-size: 26px;
@@ -562,7 +562,7 @@ header > .header_area > h1 > a {
 .appbbs_area > .appbbs_box > .app_line > a + a {
   margin-right: 0;
   padding-left: 85px;
-  background-image: url(../images/ico_phone.png);
+  background-image: url(../img/ico_phone.png);
 }
 .appbbs_box > .bbs_line {
   float: left;
@@ -581,7 +581,7 @@ header > .header_area > h1 > a {
   display: block;
   height: 20px;
   padding-left: 14px;
-  background: url(../images/ico_bullet.png) no-repeat 0 40%;
+  background: url(../img/ico_bullet.png) no-repeat 0 40%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -642,7 +642,7 @@ footer > .foot_area > .snslink > li {
   margin-left: 60px;
 }
 footer > .foot_area > .snslink > li > a {
-  background: url(../images/ico_blog_r.png) no-repeat;
+  background: url(../img/ico_blog_r.png) no-repeat;
   display: block;
   width: 50px;
   height: 74px;
@@ -650,10 +650,10 @@ footer > .foot_area > .snslink > li > a {
   overflow: hidden;
 }
 footer > .foot_area > .snslink > li + li > a {
-  background: url(../images/ico_facebook_r.png);
+  background: url(../img/ico_facebook_r.png);
 }
 footer > .foot_area > .snslink > li + li + li > a {
-  background: url(../images/ico_instargram_r.png);
+  background: url(../img/ico_instargram_r.png);
 }
 .quick_area {
   position: fixed;
@@ -700,7 +700,7 @@ footer > .foot_area > .snslink > li + li + li > a {
   overflow: hidden;
   border-left: 1px solid #a3a3a3;
   border-bottom: 1px solid #a3a3a3;
-  background: url(../images/ico_totop.png) no-repeat center;
+  background: url(../img/ico_totop.png) no-repeat center;
   background-size: 50%;
 }
 /* -------------메인페이지 끝 ------------*/
@@ -744,22 +744,22 @@ h1.loginTit > a > img {
   margin-bottom: 0;
 }
 .login_list > li.kakao {
-  background: #f3e129 url(../images/ico_katalk.png) 15px 50% no-repeat;
+  background: #f3e129 url(../img/ico_katalk.png) 15px 50% no-repeat;
   background-size: 45px 45px;
 }
 .login_list > li.kakao > a {
   color: #202224;
 }
 .login_list > li.naver {
-  background: #00c300 url(../images/ico_naver.png) 15px 50% no-repeat;
+  background: #00c300 url(../img/ico_naver.png) 15px 50% no-repeat;
   background-size: 45px 45px;
 }
 .login_list > li.facebook {
-  background: #405ea9 url(../images/ico_face.png) 15px 50% no-repeat;
+  background: #405ea9 url(../img/ico_face.png) 15px 50% no-repeat;
   background-size: 45px 45px;
 }
 .login_list > li.email {
-  background: #888 url(../images/ico_cellphone.png) 15px 50% no-repeat;
+  background: #888 url(../img/ico_cellphone.png) 15px 50% no-repeat;
   background-size: 45px 45px;
 }
 .btnonoff_line {
@@ -913,7 +913,7 @@ h1.loginTit > a > img {
 }
 .regForm .reg_list {
   padding: 0 0;
-  background: url(../images/bg_reglist.png) repeat-y;
+  background: url(../img/bg_reglist.png) repeat-y;
 }
 .regForm .reg_list li {
   min-height: 60px;
@@ -963,7 +963,7 @@ h1.loginTit > a > img {
   line-height: 30px;
   border: none;
   border-bottom: 1px solid #ccc;
-  background: url(../images/ico_search.png) no-repeat 10px 50%;
+  background: url(../img/ico_search.png) no-repeat 10px 50%;
   background-size: 15px;
 }
 .bbsListTbl {
@@ -1091,11 +1091,11 @@ h1.loginTit > a > img {
   float: left;
   width: 100px;
   padding: 0 0 0 50px;
-  background: url(../images/ico_nearNext.png) no-repeat 12px 50%;
+  background: url(../img/ico_nearNext.png) no-repeat 12px 50%;
   font-size: 15px;
 }
 .near_list li h4.next {
-  background-image: url(../images/ico_nearPrev.png);
+  background-image: url(../img/ico_nearPrev.png);
 }
 /* 상세보기 페이지(notice_view.html) 끝 */
 
@@ -1211,7 +1211,7 @@ h1.loginTit > a > img {
     display: block;
     width: 45px;
     height: 45px;
-    background: url(../images/ico_totop_mo.png) no-repeat center;
+    background: url(../img/ico_totop_mo.png) no-repeat center;
     background-size: 45px;
     border: none;
     border-radius: 50%;
@@ -1322,7 +1322,7 @@ h1.loginTit > a > img {
     text-indent: -9999px;
     font-size: 0;
     overflow: hidden;
-    background: url(../images/btn_closeMenu.png) no-repeat;
+    background: url(../img/btn_closeMenu.png) no-repeat;
     background-size: 60px;
   }
   .header_cont .gnb {
@@ -1345,19 +1345,19 @@ h1.loginTit > a > img {
     padding: 0 0 0 65px;
     height: 60px;
     line-height: 60px;
-    background: url(../images/ico_gnb01.png) no-repeat 10px center;
+    background: url(../img/ico_gnb01.png) no-repeat 10px center;
     background-size: 49px;
     font-size: 16px;
     color: #fff;
   }
   .header_cont .gnb li + li a {
-    background-image: url(../images/ico_gnb02.png);
+    background-image: url(../img/ico_gnb02.png);
   }
   .header_cont .gnb li + li + li a {
-    background-image: url(../images/ico_gnb03.png);
+    background-image: url(../img/ico_gnb03.png);
   }
   .header_cont .gnb li + li + li + li a {
-    background-image: url(../images/ico_gnb04.png);
+    background-image: url(../img/ico_gnb04.png);
   }
   .main_rolling_pc {
     display: none;
@@ -1530,15 +1530,15 @@ h1.loginTit > a > img {
     line-height: 37px;
     padding-bottom: 0;
     padding-left: 45px;
-    background: url(../images/ico_phone_mobtm.png) no-repeat 20px center;
+    background: url(../img/ico_phone_mobtm.png) no-repeat 20px center;
     background-size: 20px;
     color: #fff;
   }
   .quick_area .quick_list li + li a h3 {
-    background-image: url(../images/ico_katalk_mobtm.png);
+    background-image: url(../img/ico_katalk_mobtm.png);
   }
   .quick_area .quick_list li + li + li a h3 {
-    background-image: url(../images/ico_contact_mobtm.png);
+    background-image: url(../img/ico_contact_mobtm.png);
   }
   .quick_area .quick_list a h3 em {
     display: inline;
@@ -1560,7 +1560,7 @@ h1.loginTit > a > img {
     width: 45px;
     height: 45px;
     border: none;
-    background: url(../images/ico_totop_mo.png) no-repeat center;
+    background: url(../img/ico_totop_mo.png) no-repeat center;
     background-size: 45px;
     border-radius: 50%;
   }
@@ -1568,15 +1568,15 @@ h1.loginTit > a > img {
   /* 모바일 서브 페이지 공통 */
   .location_area.member {
     height: 260px;
-    background: url(../images/img_top5.jpg) no-repeat center bottom/cover;
+    background: url(../img/img_top5.jpg) no-repeat center bottom/cover;
   }
   .location_area.customer {
     height: 260px;
-    background: url(../images/img_top2.jpg) no-repeat center bottom / cover;
+    background: url(../img/img_top2.jpg) no-repeat center bottom / cover;
   }
   .location_area.package {
     height: 260px;
-    background: url(../images/img_top3.jpg) no-repeat center bottom / cover;
+    background: url(../img/img_top3.jpg) no-repeat center bottom / cover;
   }
   .location_area h2.tit_page {
     padding: 140px 0 0 0;
