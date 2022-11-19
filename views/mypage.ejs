@@ -2,147 +2,176 @@
 <html lang="ko">
 
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/public/main.css">
-        <link rel ="stylesheet" href="mobile.css" media="screen and (max-width : 767px)">
-        <link rel ="stylesheet" href="tablet.css" media="screen and (min-width : 768px) and (max-width):959px)">
-        <link rel ="stylesheet" href="desktop.css" media="screen and (max-width : 960px)">
-<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link href="/public/mypage.css" rel="stylesheet"> <!--css파일 삽입법-->
-    <title>Hello, world!</title>
+        <title> 로그인 페이지 </title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+        <link rel="stylesheet" href="/public/css/slick.css">
+        <link rel="stylesheet" href="/public/css/animate.css">
+        <link rel="stylesheet" href="/public/css/common.css">
+        <link rel="stylesheet" href="/public/css/mypage.css">
+        <link rel="stylesheet" href="/public/css/rwd.css">
+        <script src="/public/js/jquery-1.12.4.min.js"></script>
+        <script src="/public/js/jquery-migrate-1.4.1.min.js"></script>
+        <script src="/public/js/slick.min.js"></script>
+
+        <!--[if lte IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/prefixfree.min.js"></script>
+    <![endif]-->
     </head>
 
     <body>
-        <%- include('loginnav.html') %>
-
-        <ul id="toolbar">
-            <li><a href="">전화문의<br>010-1234-5678</a></li>
-            <li><a href="">카카오톡<br>1:1상담</a></li>
-            <li><a href="">오시는 길</a></li>
-            <li><a href=""> ▲<br>TOP</a></li>
-        </ul>
-
-       <center>
-	<div class="hover14 column" style="padding:50px 50px 50px 50px;">
-    <p class="mt-3 w-100 float-left text-center"><strong>Profile</strong></p>
-		<div class="col-md-4">
-			<figure>
-			<div class="card profile-card-2">
-				<div class="card-img-block">
-					<img class="img-fluid" src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="Card image cap">
-				</div>
-				<div class="card-body pt-5">
-					<img src="/public/spon.jpg" alt="profile-image" class="profile"/>
-                    <table >
-                        <tr>
-                            <td>이름&nbsp;&nbsp;&nbsp;</td>
-                            <td> <h5 class="card-title"><%= user.id %></h5></td>
-                        </tr>
-                        <tr>
-                            <td>생년월일&nbsp;&nbsp;&nbsp;</td>
-                            <td><h5 class="card-title"><%= user.born %></h5></td>
-                        </tr>
-                        <tr>
-                            <td>성별&nbsp;&nbsp;&nbsp;</td>
-                            <td><h5 class="card-title"><%= user.sex %></h5></td>
-                        </tr>
-                        <tr>
-                            <td>주소&nbsp;&nbsp;&nbsp;</td>
-                            <td><h5 class="card-title"><%= user.address %></h5></td>
-                        </tr>
-                        <tr>
-                            <td>전화번호&nbsp;&nbsp;&nbsp;</td>
-                            <td> <h5 class="card-title"><%= user.number %></td>
-                        </tr>
-                        <tr>
-                            <td>이메일&nbsp;&nbsp;&nbsp;</td>
-                            <td><h5 class="card-title"><%= user.email %>@<%= user.email_b %></td>
-                        </tr>
-                        </table>
-          <a href="/logout">로그아웃</a> | <a href="/editmypage">개인정보수정</a>
-				</div>
-			</div>
-			
-			</figure>
-		</div>
-	</div>
-</center> 
-	
-
-        <div class="bottom">
-            <div class="consult">
-                <a>
-                <div class="consult__box">
-                    <img src="images/ico_kakao.png" width="50" height=50>
-                    <h2>카카오톡 1:1 상담</h2>
-                </div>
-                </a>
-                <a>
-                    <div class="consult__box">
-                        <img src="images/ico_phone.png" width="50" height="50">
-                        <h2>전화 상담 신청</h2>
+            <header id="header" class="">
+                <div class="header_area row cf">
+                    <h1><a href="/">Tourist in tour</a></h1>
+                    <p class="openMOgnb">
+                        <a href="#none">
+                            <strong class="blind">메뉴열기</strong>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </p>
+                    <div class="header_cont">
+                        <ul class="util">
+                            <li></li>
+                        </ul>
+                        <nav>
+                            <ul class="depth1"> 
+                                <li><a href="#" class="openAll1">여행정보</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="#">국내</a></li>
+                                        <li><a href="#">해외</a></li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><a href="#" class="openAll2">고객센터</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="/list">공지사항</a></li>
+                                        <li><a href="/write">문의하기</a></li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><a href="/install" class="openAll3">상품투어</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="program.html">프로그램 소개</a></li>
+                                        <li><a href="#">여행자료</a></li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><a href="#" class="openAll4">티켓/가이드</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="#">항공</a></li>
+                                        <li><a href="#">호텔</a></li>
+                                    </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <p class="closeMOgnb">
+                            <a href="#none">
+                                <strong class="blind">메뉴닫기</strong>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </p>
                     </div>
-                </a>
-            </div>
-
-            <div class="notice">
-                <h3>NOTICE</h3>
-                <ul class="notice__list">
-                    <li><a href=""><span>이번 휴가 제주갈까? 미션 투어</span></a></li>
-                    <li><a href=""><span>박물관 미션 투어 응모 당첨자 발표</span> </a></li>
-                    <li><a href=""><span>추석 연휴 티켓/투어 배송 및 직접 수령</span></a></li>
-                    <li><a href=""><span>하롱베이 서비스 OPEN!{여행 정보, 가이드}</span></a></li>
-                    <li><a href=""><span>투어리스트인투어 서비스 점검 안내 </span></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-
-        <footer>
-            <ul class="info_list">
-                <h3><a href="">이용약관</a> | <a href="">개인정보취급방침</a></h3>
-                <li>투어리스트인투어</li>
-                <li>서울특별시 종로구 혜화동 9길 청문빌딩 5층</li>
-                <li><b>/</b></li>
-                <li>대표전화 02-1234-5678</li>
-                <li><b>/</b></li>
-                <li>E-mail:titour@touristInTour.com</li>
-                <li>Copyright(c) TouristInTour all right reserved</li>
+                </div>
+            </header>
+<!-- wrap -->
+<div id="container">
+    <div class="location_area member">
+        <div class="box_inner">
+            <h2 class="tit_page">TOURIST <span class="in">in</span> TOUR</h2>
+            <p class="location">MYPAGE <span class="path">/</span>  내 정보</p>
+            <ul class="page_menu clear">
+                <li><a href="#" class="on">개인 정보 수정</a></li>
             </ul>
-            <div class="image_box">
-                <a href=""><img src="images/ico_blog_r.png" width=50></a>
-                <a href=""><img src="images/ico_face.png" width=50 style="padding-bottom:25px"></a>
-                <a href=""><img src="images/ico_instargram_r.png" width=50></a>
-            </div>
-        </footer>
+        </div>
+    </div>
+    <div class="bodytext_area box_inner">
+        <dl class="myinfo">
+            <dt>내 정보</dt>
+            <dd>
+                <form action="#" class="regForm">
+                    <fieldset>
+                        <legend>내정보 입력 양식</legend>
+                        <ul class="reg_list">
+                            <li class="clear">
+                                <span class="tit_lbl">이름</span>
+                                <div class="reg_content"><%= user.id %></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">생년월일</span>
+                                <div class="reg_content"><%= user.born %></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">성별</span>
+                                <div class="reg_content radio_area"><%= user.sex %></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">주소</span>
+                                <div class="reg_content"><%= user.address %></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">핸드폰</span>
+                                <div class="reg_content"><%= user.number %></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">SMS 수신동의</span>
+                                <div class="reg_content radio_area"></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">이메일</span>
+                                <div class="reg_content"><%= user.email %>&nbsp;@&nbsp;<%=user.email_b%></div>
+                            </li>
+                            <li class="clear">
+                                <span class="tit_lbl">이메일 수신동의</span>
+                                <div class="reg_content radio_area"> </div>
+                            </li>
+                        </ul>
+                        <div id="but">    
+                            <span class="btn_line"><a href="/login" class="btn_baseColor" >로그아웃</a></span>
+                            <span class="btn_line"><a href="/editmypage" class="btn_baseColor" >개인정보수정</a></span>
+                        </div>
+                    </fieldset>
+                </form>
+            </dd>
+        </dl>
+    </div>
+</div>
+   <!-- //container -->
 
-        <!-- 모바일기준 제작  -->
-        <ul class="button">
-            <li><a href="">전화문의</a></li>
-            <li>|</li>
-            <li><a href="">카카오톡 상담</a></li>
-            <li>|</li>
-            <li><a href="">오시는 길</a></li>
-        </ul>
-        <!-- Optional JavaScript; choose one of the two! -->
+    <footer>
+        <div class="foot_area row">
+            <ul class="foot_list">
+                <li><a href="javascript:;">이용약관</a></li>
+                <li><a href="javascript:;">개인정보취급방침</a></li>
+            </ul>
+            <h2>투어리스트인투어</h2>
+            <p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>
+                <span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>
+                    <span class="br_line">E-mail : <span class="space0"> titour@touristintour.com</span></span>
+                </span>
+            </p>
+            <p class="copy">Copyright(c) TouristInTour all right reserved</p>
+            <ul class="snslink">
+                <li><a href="javascript:;">blog</a></li>
+                <li><a href="javascript:;">facebook</a></li>
+                <li><a href="javascript:;">instargram</a></li>
+            </ul>
+        </div>
+    </footer>
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    -->
-    <script type="text/javascript" src="practice.js"></script>
+</div>
+<!-- //wrap -->
+        <script src="/public/js/myscript.js"></script>
     </body>
 
 </html>

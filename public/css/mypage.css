@@ -1,0 +1,37 @@
+.btn_line { text-align: center; font-size: 0; }
+.btn_line a { margin-left: 10px; }
+.btn_line a:first-child { margin-left: 0; }
+.btn_srch { display:inline-block; width: 70px; text-align: center; height: 35px; font-size: 14px; line-height: 35px; vertical-align: middle; background: #384d75; color: #fff !important; }
+.btn_bbs { display: inline-block; width: 70px; text-align: center; height: 35px; font-size: 14px; line-height: 35px; vertical-align: middle; background-color: #384d75; color: #fff !important; }
+.btn_baseColor { display: inline-block; width: 125px; height: 50px; line-height: 50px; background-color: #384d75; font-size: 20px; color: #fff !important; }
+
+#but{
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.location_area { height: 445px; background: url(../img/img_top2.jpg) no-repeat center bottom; }
+.location_area.member { background-image: url(../img/img_top5.jpg);}
+.location_area.package { background-image: url(../img/img_top3.jpg);}
+
+.location_area h2.tit_page { padding: 250px 0 0 0; margin: 0 50px; border-bottom: 1px solid #ccc; font: 30px "Arial Narrow"; color: #fff; letter-spacing: 3px; }
+.location_area h2.tit_page .in { font-variant: small-caps; }
+.location_area p.location { padding: 20px 0 0 50px; color: #fff; }
+.location_area ul.page_menu { display:none; }
+.bodytext_area { box-sizing: border-box; padding: 55px 50px 0; }
+
+
+.myinfo dt { width: 170px; height: 70px; line-height: 70px; text-align: center; background-color: #dfe3ea; font-size: 18px; background: #000; color: #fff;}
+.myinfo dd { border-top: 2px solid #000; }
+.regForm .reg_list { padding: 10px 0 0; background: url(../img/bg_reglist.png) repeat-y;}
+.regForm .reg_list li { min-height: 60px; padding:0; border-bottom: 1px solid #ccc; }
+.regForm .reg_list li .tit_lbl { position: relative; float: left; width: 150px; box-sizing: border-box; padding-left: 20px; line-height: 60px; font-weight: bold; font-size: 16px;}
+
+.regForm .reg_list li .reg_content { text-align: center; margin-left: 30%; width: 770px; box-sizing: border-box; padding-left: 20px; padding-top: 25px; font-size: 18px; }
+.regForm .reg_list li .reg_content * { vertical-align: middle; }
+.regForm .reg_list li .reg_content.radio_area { padding-top: 20px; }
+.regForm .reg_list li .reg_content label { vertical-align: middle; }
+.regForm .reg_list li .reg_content .info_line { padding: 10px 10px 17px 0; font-size: 15px; }
