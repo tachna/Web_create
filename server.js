@@ -278,7 +278,7 @@ app.put('/edit',function(요청,응답){
 
 app.put('/editmypage',function(요청,응답){
     db.collection('login').updateOne({_id : 요청.user._id},
-    { $set : {id: 요청.body.identi, pw: 요청.body.password, born: 요청.body.born, sex: 요청.body.sex, address: 요청.body.address, number: 요청.body.number, email: 요청.body.email}},function(에러, 결과){
+    { $set : {id: 요청.body.identi, pw: 요청.body.password, born: 요청.body.born, sex: 요청.body.sex, address: 요청.body.address, number: 요청.body.number, email: 요청.body.email, email_b : 요청.body.edomain}},function(에러, 결과){
         console.log('수정완료')
         응답.redirect('/newpage')
     })
