@@ -278,7 +278,32 @@ app.put('/editmypage',function(요청,응답){
 //---------------------------------------------------------------------------------------------------------------
 
 //검색
-app.get('/search',(요청,응답) => {//검색엔진 mongodb에서 텍스트 인덱싱을 해주어야함
+function 로긴유무4(req, res, next){
+    if(req.user){
+        next()//있다면 통과
+    }else{
+        var 검색조건 = [
+            {
+              $search: {
+                index: 'titleSearch',
+                text: {
+                  query: req.query.value,
+                  path: '제목'//'제목'  // 제목날짜 둘다 찾고 싶으면 ['제목', '날짜']
+                }
+              }
+            },
+            //{ $sort: { _id : -1}},  //아이디순으로 정렬되서 출력
+            { $limit: 10 }, // 10개만 검색가능
+            //{$project : {제목: 1. _id:0, score:{$meta: "searchSCore"}}}  검색결과에서 필터링하기
+        ] 
+        db.collection('post').aggregate(검색조건).toArray((에러, 결과)=>{
+            console.log(결과)   
+            res.render('search_nologin.ejs', {posts : 결과})
+        })
+    }
+}
+
+app.get('/search',로긴유무4,(요청,응답) => {//검색엔진 mongodb에서 텍스트 인덱싱을 해주어야함
     var 검색조건 = [
         {
           $search: {
