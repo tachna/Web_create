@@ -196,7 +196,7 @@ app.post('/register', function(req,res){//정보는 요청 부분에 저장되�
     db.collection('counter2').findOne({name:'아이디갯수'}, function(err,result){
         console.log(result.totalPost) // () -> 총게시물갯수
         var 총게시물갯수 = result.totalPost;
-        var saver = { id: req.body.id, pw: req.body.pw, _id: 총게시물갯수 +1, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email}
+        var saver = { id: req.body.id, pw: req.body.pw, _id: 총게시물갯수 +1, born: req.body.born, sex: req.body.sex, address: req.body.address, number: req.body.number, email: req.body.email, email_b: req.body.edomain}
         db.collection('login').insertOne(saver,function(err,result){
             console.log('saved');
             db.collection('counter2').updateOne({name:'아이디갯수'},{ $inc : {totalPost:1}}, function(err,result){
