@@ -249,14 +249,6 @@ app.delete('/delete',function(req, res){
 
 //---------------------------------------------------------------------------------------------------------------
 
-// detail-nologin 로 접속하면 detail-nologin.ejs보여줌
-app.get('/detail-nologin/:id',function(req, res){
-    db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
-        console.log(result)
-        res.render('detail-nologin.ejs',{data:result})
-    })
-    
-})
 
 // edit.ejs파일에 내가 접속한경로의 아이디를 찾은후 쏴준다 
 app.get('/edit/:id',function(req, res){
