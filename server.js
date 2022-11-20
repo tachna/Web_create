@@ -209,7 +209,7 @@ app.post('/register', function(req,res){//정보는 요청 부분에 저장되�
 
 //어떤 사람이 /add 경로로 post요청을 하면 ~를 해주세요
 app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있음
-    res.render('homepage.ejs');//post기능을 사용하기 위해선 app.use(express.urlencoded({extended: true})) 삽입필요
+    res.render('newpage.ejs');//post기능을 사용하기 위해선 app.use(express.urlencoded({extended: true})) 삽입필요
     db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
         console.log(result.totalPost) // () -> 총게시물갯수
         var 총게시물갯수 = result.totalPost;
