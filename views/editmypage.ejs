@@ -1,62 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
 
-<!doctype html>
-<html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Hello, world!</title>
-    <link rel="stylesheet" href="/public/list.css" > <!--css파일 삽입법-->
-  </head>
-  <body>
-    <%- include('newpagenav2.html') %>
-    <form action="/editmypage?_method=PUT" method="POST"> <!--라이브러리를 활용하여 put요청 기능구현-->
-        <div class="form-group">
-          <label>변경할 닉네임</label>
-          <input type = "text"  name="id" style="display: none;">
-          <input type="text" class="form-control" name="identi">
+    <head>
+        <title> 개인정보수정 </title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+        <link rel="stylesheet" href="/public/css/slick.css">
+        <link rel="stylesheet" href="/public/css/animate.css">
+        <link rel="stylesheet" href="/public/css/common.css">
+        <link rel="stylesheet" href="/public/css/editmypage.css">
+        <link rel="stylesheet" href="/public/css/rwd.css">
+        <script src="/public/js/jquery-1.12.4.min.js"></script>
+        <script src="/public/js/jquery-migrate-1.4.1.min.js"></script>
+        <script src="/public/js/slick.min.js"></script>
+
+        <!--[if lte IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/prefixfree.min.js"></script>
+    <![endif]-->
+    </head>
+
+    <body>
+            <header id="header" class="">
+                <div class="header_area row cf">
+                    <h1><a href="/newpage">Tourist in tour</a></h1>
+                    <p class="openMOgnb">
+                        <a href="#none">
+                            <strong class="blind">메뉴열기</strong>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </p>
+                    <div class="header_cont">
+                        <ul class="util">
+                            <li></li>
+                        </ul>
+                        <nav>
+                            <ul class="depth1"> 
+                                <li><a href="#" class="openAll1">여행정보</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="#">국내</a></li>
+                                        <li><a href="#">해외</a></li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><a href="#" class="openAll2">고객센터</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="/list">공지사항</a></li>
+                                        <li><a href="/write">문의하기</a></li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><a href="/install" class="openAll3">상품투어</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="program.html">프로그램 소개</a></li>
+                                        <li><a href="#">여행자료</a></li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><a href="#" class="openAll4">티켓/가이드</a>
+                                    <div class="dep2box">
+                                    <ul class="depth2 row">
+                                        <li><a href="#">항공</a></li>
+                                        <li><a href="#">호텔</a></li>
+                                    </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <p class="closeMOgnb">
+                            <a href="#none">
+                                <strong class="blind">메뉴닫기</strong>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </header>
+<!-- wrap -->
+<div id="container">
+  <div class="location_area member">
+      <div class="box_inner">
+          <h2 class="tit_page">TOURIST <span class="in">in</span> TOUR</h2>
+          <p class="location">MYPAGE <span class="path">/</span>  개인 정보 수정</p>
+          <ul class="page_menu clear">
+              <li><a href="#" class="on">개인 정보 수정</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="bodytext_area box_inner">
+      <dl class="myinfo">
+          <dt>내 정보</dt>
+          <dd>
+              <form action="/editmypage?_method=PUT" method="post" class="regForm">
+                  <fieldset>
+                      <legend>내정보 입력 양식</legend>
+                      <ul class="reg_list">
+                          <li class="clear">
+                              <span class="tit_lbl">이름</span>
+                              <div class="reg_content">
+                                <input type = "text"  name="id" style="display: none;">
+                                <input type="text" class="form-control" name="identi" placeholder="홍길동">
+                              </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">생년월일</span>
+                              <div class="reg_content">
+                                <input type = "text"  name="id" style="display: none;">
+                                <input type="text" class="form-control" name="born" placeholder="220101">
+                              </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">성별</span>
+                              <div class="reg_content radio_area">
+                                <input type="radio" class="css_radio" id="mmm_lbl" name="sex" checked><label for="mmm_lbl">남</label>
+                                <input type="radio" class="css_radio" id="www_lbl" name="sex"><label for="www_lbl">여</label>
+                            </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">주소</span>
+                              <div class="reg_content">          
+                                <input type = "text"  name="id" style="display: none;">
+                                <input type="text" class="form-control" name="address" placeholder="경상남도 밀양시 삼랑진읍 ..">
+                            </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">핸드폰</span>
+                              <div class="reg_content">
+                                <input type = "text"  name="id" style="display: none;">
+                                <input type="text" class="form-control" name="number" placeholder="010-1234-5678">
+                              </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">SMS 수신동의</span>
+                              <div class="reg_content radio_area">
+                                <input type="radio" class="css_radio" id="smsyes_lbl" name="smsyesno" checked><label for="smsyes_lbl">허용</label>
+                                <input type="radio" class="css_radio" id="smsno_lbl" name="smsyesno"><label for="smsno_lbl">거부</label>
+                              <p class="info_line">(고객님의 편의를 위해 알림, 공지사항, 이벤트 등의 내용을 제공하고자 합니다.</p>
+                              </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">이메일</span>
+                              <div class="reg_content">
+                                <input type = "text"  name="id" style="display: none;">
+                                <input type="text" class="form-control" name="email" placeholder="홍길동">
+                                &nbsp;@&nbsp;
+                                <input type="text" class="form-control" name="email_b" placeholder="pusan.ac.kr">
+                              </div>
+                          </li>
+                          <li class="clear">
+                              <span class="tit_lbl">이메일 수신동의</span>
+                              <div class="reg_content radio_area">
+                                <input type="radio" class="css_radio" id="emailyes_lbl" name="emailyesno" checked><label for="emailyes_lbl">허용</label>
+                                <input type="radio" class="css_radio" id="emailno_lbl" name="emailyesno"><label for="emailno_lbl">거부</label>
+                              <p class="info_line">(고객님의 편의를 위해 알림, 공지사항, 이벤트 등의 내용을 제공하고자 합니다.</p>
+                              </div>
+                          </li>
+                      </ul>
+                      <button type="submit" class="but">등록</button>
+                  </fieldset>
+              </form>
+          </dd>
+      </dl>
+  </div>
+</div>
+
+    <footer>
+        <div class="foot_area row">
+            <ul class="foot_list">
+                <li><a href="javascript:;">이용약관</a></li>
+                <li><a href="javascript:;">개인정보취급방침</a></li>
+            </ul>
+            <h2>투어리스트인투어</h2>
+            <p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>
+                <span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>
+                    <span class="br_line">E-mail : <span class="space0"> titour@touristintour.com</span></span>
+                </span>
+            </p>
+            <p class="copy">Copyright(c) TouristInTour all right reserved</p>
+            <ul class="snslink">
+                <li><a href="javascript:;">blog</a></li>
+                <li><a href="javascript:;">facebook</a></li>
+                <li><a href="javascript:;">instargram</a></li>
+            </ul>
         </div>
-        <div class="form-group">
-          <label>변경할 비밀번호</label>
-          <input type="text" class="form-control" name="password"><!--서버에서 input을 구분하기위해 이름사용-->
-        </div>
-        <div class="form-group">
-          <label>변경할 생년월일</label>
-          <input type = "text"  name="id" style="display: none;">
-          <input type="text" class="form-control" name="born">
-        </div>
-        <div class="form-group">
-          <label>변경할 성별</label>
-          <input type = "text"  name="id" style="display: none;">
-          <input type="text" class="form-control" name="sex">
-        </div>
-        <div class="form-group">
-          <label>변경할 주소</label>
-          <input type = "text"  name="id" style="display: none;">
-          <input type="text" class="form-control" name="address">
-        </div>
-        <div class="form-group">
-          <label>변경할 휴대폰 번호</label>
-          <input type = "text"  name="id" style="display: none;">
-          <input type="text" class="form-control" name="number">
-        </div>
-        <div class="form-group">
-          <label>변경할 이메일 주소</label>
-          <input type = "text"  name="id" style="display: none;">
-          <input type="text" class="form-control" name="email">
-        </div>
-        <button type="submit" class="btn btn-outline-secondary">변경하기</button>
-      </form> 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-    
-  </body>
+    </footer>
+
+</div>
+<!-- //wrap -->
+        <script src="/public/js/myscript.js"></script>
+    </body>
+
 </html>

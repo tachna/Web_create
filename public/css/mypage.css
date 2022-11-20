@@ -1,3 +1,14 @@
+* { margin: 0; padding: 0 }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: inherit; }
+ul, ol, li { list-style: none; }
+.clear:after { content: ""; display: block; clear: both; }
+.box_inner { width: 1050px; margin: 0 auto; }
+.hdd, legend { font-size: 0; width: 0; height: 0; line-height: 0; text-indent: -9999px; overflow: hidden; visibility: hidden; position: absolute; top: 0; left: 0; }
+img { vertical-align: middle; }
+body { line-height: 1; font-family: "Malgun Gothic", "맑은 고딕"; letter-spacing: -1px; color: #444; white-space: normal; word-wrap: break-word; }
+input, select, textarea, button, form img, label { vertical-align: middle; }
+img, fieldset, a {border: none;}
+table, thead, tbody, tfoot { border-collapse: collapse; border-spacing: 0; border: 0 none;}
 .btn_line { text-align: center; font-size: 0; }
 .btn_line a { margin-left: 10px; }
 .btn_line a:first-child { margin-left: 0; }
@@ -30,7 +41,7 @@
 .regForm .reg_list li { min-height: 60px; padding:0; border-bottom: 1px solid #ccc; }
 .regForm .reg_list li .tit_lbl { position: relative; float: left; width: 150px; box-sizing: border-box; padding-left: 20px; line-height: 60px; font-weight: bold; font-size: 16px;}
 
-.regForm .reg_list li .reg_content { text-align: center; margin-left: 30%; width: 770px; box-sizing: border-box; padding-left: 20px; padding-top: 25px; font-size: 18px; }
+.regForm .reg_list li .reg_content { text-align: center; margin-left: 15%; width: 770px; box-sizing: border-box; padding-left: 20px; padding-top: 25px; font-size: 16px; }
 .regForm .reg_list li .reg_content * { vertical-align: middle; }
 .regForm .reg_list li .reg_content.radio_area { padding-top: 20px; }
 .regForm .reg_list li .reg_content label { vertical-align: middle; }
