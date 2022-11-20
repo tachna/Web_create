@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+
+#container .join_tit {height: 445px;
+background: url(../img/img_top5.jpg) no-repeat center;
+background-size: cover;}
+
+#container .join_tit h2 {padding: 250px 0 0 0;
+margin:0 50px; border-bottom:1px solid #ccc; 
+font: 30px 'Arial Narrow'; color: #fff; letter-spacing:3px;}
+#container .join_tit .in {font-variant: small-caps;}
+#container .join_tit p {padding: 20px 0 0 50px; color: #fff;}
+#container .join_tit .path {padding: 0 10px;}
+
+.join_form {padding: 55px 50px;}
+.join_form .info_pilsoo {font-size: 15px; color: #f00;
+padding-left: 20px; padding-bottom: 10px; 
+border-bottom: 2px solid#000;}
+.join_form .pilsoo_item:before {content: "게시글 작성"; color: rgb(0, 0, 0);
+position:relative; left:-10px; top:3px; font-weight: bold;}
+.join_form .app_list {padding: 10px 0px 10px 20px;
+border-bottom: 1px solid #ccc;}
+.join_form .app_list li {padding: 8px 0px;}
+.join_form .tit_lbl {float: left; width: 20%; font-weight: bold;
+font-size: 17px; letter-spacing: -2px; line-height: 45px;}
+.join_form .app_content {float: right;width: 80%;}
+
+.join_form input[type=text],
+.join_form input[type=password],
+.join_form select,
+.join_form textarea {
+    height: 45px; border:1px solid #ccc;padding: 0 10px;
+    line-height: 45px; font-size: 15px; width: 100%; 
+}
+.join_form #email_lbl,
+.join_form #edomain,
+.join_form #edomain_opt,
+.join_form #birth {width: 160px;}
+.join_form #query {height: 245px; font-size: 15px; 
+font-family: 'Malgun Gothic','맑은 고딕',sans-serif;
+letter-spacing: -1px; color: #444; padding:10px;
+line-height: 1.5em;}
+/*textarea는 글꼴 관련 스타일을 상위태그에서 상속받지 못함*/
+.join_form .btn {text-align: center; margin-top: 20px;}
+.join_form .btn input {width: 80px; height: 50px; 
+background: #000; color: #fff; border: none; font-size:20px;
+border-radius: 5px; margin:0 10px;} 
+.join_form .btn input [type='reset'] {background: #555;}
+.join_form .btn input:hover {background: #f00;}
+.join_form .radio_area,
+.join_form .hobby_area {height: 45px;}
+
+.join_form .radio_area label
+ {padding-right: 20px; font-size: 15px;
+color: #444; padding-left: 20px; display: inline-block; height: 15px;
+margin-top: 20px;  background:url(../img/bg_radio.png) no-repeat 0 0;}
+.join_form .radio_area input[type='radio']:checked+label {
+    background:url(../img/bg_radio.png) no-repeat 0 -50px;}
+
+.join_form .hobby_area label {
+    padding-right: 20px; font-size: 15px;
+color: #444; padding-left: 20px; display: inline-block; 
+background:url(../img/bg_checkbox.png) no-repeat 0 0px;
+background-size:15px 30px; height:15px;}
+.join_form .hobby_area input[type='checkbox']:checked+label {
+    background-position: 0 -15px;}
