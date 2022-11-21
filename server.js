@@ -12,6 +12,10 @@ require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1
 app.use(methodOverride('_method'))//메소드 오버라이드2
 let multer = require('multer'); //multer라이브러리 사용
+let today = new Date(); //시간
+function rand(min, max) {   //조회수 난수생성
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 var db;
 MongoClient.connect(process.env.DB_URL,function(err, client){
@@ -213,7 +217,7 @@ app.post('/add', function(req,res){//정보는 요청 부분에 저장되어있�
     db.collection('counter').findOne({name:'게시물갯수'}, function(err,result){
         console.log(result.totalPost) // () -> 총게시물갯수
         var 총게시물갯수 = result.totalPost;
-        var saver = {serial_number : req.user._id,_id : 총게시물갯수 +1, id: req.user.id, 제목 : req.body.title, 내용 : req.body.descript}
+        var saver = {serial_number : req.user._id,_id : 총게시물갯수 +1, id: req.user.id, 제목 : req.body.title, 내용 : req.body.descript, 작성일 : today.toLocaleDateString('ko-kr'), 조회수 : rand(1, 999)}
         db.collection('post').insertOne(saver,function(err,result){
             console.log('saved');
             db.collection('counter').updateOne({name:'게시물갯수'},{ $inc : {totalPost:1}}, function(err,result){
