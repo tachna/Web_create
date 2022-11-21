@@ -84,7 +84,7 @@ app.get('/login',function(req, res){
 });
 //------------------------------------------------------------------------newpage
 app.post('/login', passport.authenticate('local',{
-    failureRedirect : 'fail' //로긴 실패시 fail경로로 보내짐
+    failureRedirect : '/login' //로긴 실패시 fail경로로 보내짐
 }), function(req, res){
     res.redirect('/newpage') //로긴 성공시 '/' 로 보내짐
 });
@@ -241,7 +241,7 @@ app.delete('/delete',function(req, res){
         })
     }
     else{
-        var deldata = {_id: req.body._id, serial_number:req.user._id}
+        var deldata = { serial_number:req.user._id}
         db.collection('post').deleteOne(deldata,function(err, result){
         console.log('delete succeed');
         if(err) {console.log(err)}
@@ -264,7 +264,7 @@ app.get('/edit/:id',function(req, res){
 })//put 요청을 하면, 요청.bodyid를 db에서 찾은후 제목과 날짜를 업데이트해준다
 
 app.put('/edit',function(요청,응답){
-    db.collection('post').updateOne({_id : parseInt(요청.body.id)},
+    db.collection('post').updateOne({serial_number:요청.user._id},
     { $set : {제목: 요청.body.title ,내용: 요청.body.descript}},function(에러, 결과){
         console.log('수정완료')
         응답.redirect('/list')
