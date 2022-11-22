@@ -272,6 +272,16 @@ app.put('/edit',function(요청,응답){
 });
 //---------------------------------------------------------------------------------------------------------------
 
+// edit.ejs파일에 내가 접속한경로의 아이디를 찾은후 쏴준다 
+app.get('/editmypage',function(req, res){
+    db.collection('login').findOne({_id : req.user._id},function(err, result){
+        console.log(result)
+        res.render('editmypage.ejs',{post:result})
+        console.log(post)
+    })
+    
+})
+
 app.put('/editmypage',function(요청,응답){
     db.collection('login').updateOne({_id : 요청.user._id},
     { $set : {id: 요청.body.identi,/* pw: 요청.body.password,*/ born: 요청.body.born, sex: 요청.body.sex, address: 요청.body.address, number: 요청.body.number, email: 요청.body.email, email_b : 요청.body.edomain,smsyesno:요청.body.smsyesno,emailyesno:요청.body.emailyesno}},function(에러, 결과){
