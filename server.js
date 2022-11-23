@@ -48,29 +48,6 @@ app.get('/editmypage', function(req, res){
 
 
 
-
-// 파일저장, 램에다가 저장해주세요--------------------------------------------------------------------------------
-var storage = multer.diskStorage({
-    destination : function(req, file, cb){
-        cb(null, './public/image')
-    },
-    filename : function(req, file, cb){
-        cb(null, file.originalname)
-    }
-}); 
-var upload = multer({storage : storage});
-
-app.get('/upload', function(req,res){//이미지저장
-    res.render('upload.ejs')
-})
-
-app.post('/upload', upload.single('profile'), function(req, res){
-    res.send('succeed')
-});
-
-// app.get('/image/:이미지이름', function(req,res){
-//     res.sendFile(__dirname+'/public/image/'+res.params.이미지이름)
-// })
 //로긴 페이지 셋팅 -----------------------------------------------------------------------------------------------
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
