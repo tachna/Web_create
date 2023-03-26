@@ -16,7 +16,7 @@ let today = new Date(); //시간
 function rand(min, max) {   //조회수 난수생성
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
+//
 var db;
 MongoClient.connect(process.env.DB_URL,function(err, client){
     if(err) return console.log(err)
