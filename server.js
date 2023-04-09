@@ -27,16 +27,31 @@ MongoClient.connect(process.env.DB_URL,function(err, client){
 })
 
 app.get('/', function(req, res){
-    res.render('homepage.ejs');//res.sendFile(__dirname+'/~.html)
+    res.render('index.ejs');//res.sendFile(__dirname+'/~.html)
 });
 
-app.get('/install', function(req, res){
-    res.render('install.ejs');
+app.get('/tables', function(req, res){
+    res.render('tables.ejs');
 });
 
-app.get('/index', function(req, res){
-    res.render('check-email.ejs');
+app.get('/charts', function(req, res){
+    res.render('charts.ejs');
 });
+app.get('/buttons', function(req, res){
+    res.render('buttons.ejs');
+});
+app.get('/cards', function(req, res){
+    res.render('cards.ejs');
+});
+
+
+
+
+
+
+
+
+
 app.use('/',require('./routes/index.js'));//이메일 라우트 사용
 
 app.get('/makeid', function(req, res){

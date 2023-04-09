@@ -1,190 +1,103 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
-    <head>
-        <title> 로그인 페이지 </title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2">
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-        <link rel="stylesheet" href="/public/css/slick.css">
-        <link rel="stylesheet" href="/public/css/animate.css">
-        <link rel="stylesheet" href="/public/css/common.css">
-        <link rel="stylesheet" href="/public/css/rwd.css">
-        <script src="/public/js/jquery-1.12.4.min.js"></script>
-        <script src="/public/js/jquery-migrate-1.4.1.min.js"></script>
-        <script src="/public/js/slick.min.js"></script>
- 
-        <style>
-            .login_wrap {width: 800px; margin: 100px auto 0; }
-            h1.loginTit {text-align:center;}
-            h1.loginTit a {display:block;}
-            h1.loginTit a img { margin-top: 30px;margin-bottom: 30px;}
-            .login_list{
-                padding-top: 10px;
-                padding-bottom: 10px;
-                margin-bottom: 10px;
-                text-align:center;
-            }
-            input{
-                width: 75%;
-                margin-bottom: 10px;
-                padding: 10px;
-                box-sizing: border-box;
-                border-radius: 7px;
-            }
-            .btn_line{
-                font-size: 20px;
-                margin-top: 10px;
-                margin-bottom: 20px;
-                color: white;
-                border: none;
-                width: 75%;
-                height: 50px;
-                background-color: gray;
-                border-radius: 5px;
-            }
-            #submenu > li{
-                color: gray;
-                opacity: 0.5;
-                margin-right: 10px;
-                display: inline-block;
-            }
-        </style>
+<head>
 
-        <!--[if lte IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/prefixfree.min.js"></script>
-    <![endif]-->
-    </head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <body>
-            <header id="header" class="">
-                <br>
-                <div class="header_area row cf">
-                    <h1><a href="/">Tourist in tour</a></h1>
-                    <p class="openMOgnb">
-                        <a href="#none">
-                            <strong class="blind">메뉴열기</strong>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </a>
-                    </p>
-                    <div class="header_cont">
-                        <ul class="util">
-                            <li></li>
-                        </ul>
-                        <nav>
-                            <ul class="depth1"> 
-                                <li><a href="#" class="openAll1">여행정보</a>
-                                    <div class="dep2box">
-                                    <ul class="depth2 row">
-                                        <li><a href="#">국내</a></li>
-                                        <li><a href="#">해외</a></li>
-                                    </ul>
-                                </div>
-                                </li>
-                                <li><a href="#" class="openAll2">고객센터</a>
-                                    <div class="dep2box">
-                                    <ul class="depth2 row">
-                                        <li><a href="/list">공지사항</a></li>
-                                        <li><a href="/write">문의하기</a></li>
-                                    </ul>
-                                </div>
-                                </li>
-                                <li><a href="/install" class="openAll3">상품투어</a>
-                                    <div class="dep2box">
-                                    <ul class="depth2 row">
-                                        <li><a href="program.html">프로그램 소개</a></li>
-                                        <li><a href="#">여행자료</a></li>
-                                    </ul>
-                                </div>
-                                </li>
-                                <li><a href="#" class="openAll4">티켓/가이드</a>
-                                    <div class="dep2box">
-                                    <ul class="depth2 row">
-                                        <li><a href="#">항공</a></li>
-                                        <li><a href="#">호텔</a></li>
-                                    </ul>
+    <title>SB Admin 2 - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                </li>
-                            </ul>
-                        </nav>
-                        <p class="closeMOgnb">
-                            <a href="#none">
-                                <strong class="blind">메뉴닫기</strong>
-                                <span></span>
-                                <span></span>
-                            </a>
-                        </p>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </a>
+                                        <hr>
+                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a>
+                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </header>
-<!-- wrap -->
-<div id="wrap" class="s_point">
-   
-   <div id="container" id="layout0">
-      
-      <!-- bodytext_area -->
-      <div class="bodytext_area box_inner">
-         <!-- login-wrap -->
-         <div class="login_wrap">
 
-            <h1 class="loginTit"><a href="#"><img src="/public/img/tit_login.png" alt="TOURIST IN TOUR" /></a></h1>
-            <ul class="login_list">
-                    <form action="/login" method="POST" class="login_list">    
-                        <input type="text" name="id" placeholder="아이디" required="" autofocus="" />
-                        <br>
-                        <input type="password" class="form-control" name="pw" placeholder="비밀번호" required="" />  
-                        <br>
-                        <button class="btn_line" type="submit">로그인</button>
-                        <br>
-                        <hr>
-                        <br>
+            </div>
 
-                        <ul id="submenu">
-                            <li><a href="#">아이디 찾기</a></li>
-                            <li>|</li>
-                            <li><a href="#">비밀번호 찾기</a></li>
-                            <li>|</li>
-                            <li><a href="/makeid">회원 가입</a></li>
-                        </ul>
-                    </form>
-
-            </ul>
-         </div>
-         <!-- //login-wrap -->
-      </div>
-      <!-- //bodytext_area -->
-
-   </div>
-   <!-- //container -->
-
-    <footer>
-        <div class="foot_area row">
-            <ul class="foot_list">
-                <li><a href="javascript:;">이용약관</a></li>
-                <li><a href="javascript:;">개인정보취급방침</a></li>
-            </ul>
-            <h2>투어리스트인투어</h2>
-            <p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>
-                <span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>
-                    <span class="br_line">E-mail : <span class="space0"> titour@touristintour.com</span></span>
-                </span>
-            </p>
-            <p class="copy">Copyright(c) TouristInTour all right reserved</p>
-            <ul class="snslink">
-                <li><a href="javascript:;">blog</a></li>
-                <li><a href="javascript:;">facebook</a></li>
-                <li><a href="javascript:;">instargram</a></li>
-            </ul>
         </div>
-    </footer>
 
-</div>
-<!-- //wrap -->
-        <script src="/public/js/myscript.js"></script>
-    </body>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../public/vendor/jquery/jquery.min.js"></script>
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../public/js/sb-admin-2.min.js"></script>
+
+</body>
 
 </html>
