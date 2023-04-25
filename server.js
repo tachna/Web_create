@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 app.use(express.urlencoded({extended: true})) //post요청을 위해
 const MongoClient = require('mongodb').MongoClient;//mongodb 사용
+const mysql = require('mysql2');
 app.set('view engine', 'ejs'); //ejs 사용 헤더
 app.use('/public', express.static('public')) //미들웨어, public폴더를 사용 (css파일관련)
 app.use(express.static('views')); //사진 
@@ -11,24 +12,39 @@ app.use('/uploads', express.static('uploads'));
 require('dotenv').config()//env환경변수 선언
 const methodOverride = require('method-override')// 메소드 오버라이드1
 app.use(methodOverride('_method'))//메소드 오버라이드2
-let multer = require('multer'); //multer라이브러리 사용
-let today = new Date(); //시간
-function rand(min, max) {   //조회수 난수생성
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+var options = {
+    host : 'localhost',
+    user : 'root',
+    password : '1234',
+    database : 'mydatabase'
 }
 //
-var db;
-MongoClient.connect(process.env.DB_URL,function(err, client){
-    if(err) return console.log(err)
-    db = client.db('p-db');
-    app.listen(process.env.PORT,function(){
-        console.log('listening on 3000')
-    });
-})
-
-app.get('/', function(req, res){
-    res.render('index.ejs');//res.sendFile(__dirname+'/~.html)
+const connection = mysql.createConnection({
+    host : 'localhost',
+    user:'root',
+    password:'1234',
+    database:'mydatabase',
+    port:'3306'
 });
+
+app.listen(3000,()=>{
+    connection.connect();
+    console.log('server is running port 3000!');
+});
+
+app.get('/',function(req, res){
+    connection.query('select * from people',function(err, rows){
+        console.log(rows)
+        res.render('index.ejs',{'data':rows},function(err,html){
+            if(err){
+                console.log(err)
+            }
+            res.end(html)
+        })
+    })
+})
 
 app.get('/tables', function(req, res){
     res.render('tables.ejs');
@@ -74,70 +90,33 @@ app.use(passport.session());
 app.get('/login',function(req, res){
     res.render('login.ejs')
 });
-//------------------------------------------------------------------------newpage
-app.post('/login', passport.authenticate('local',{
-    failureRedirect : '/login' //로긴 실패시 fail경로로 보내짐
-}), function(req, res){
-    res.redirect('/newpage') //로긴 성공시 '/' 로 보내짐
-});
 
-app.get('/newpage', 로긴유무 ,function(req, res){//mypage에 접속하면 로긴유무 함수 발동
-    console.log(req.user);
-    res.render('newpage.ejs',{ user: req.user})
-})
-//------------------------------------------------------------------------
-app.get('/mypage', 로긴유무 ,function(req, res){//mypage에 접속하면 로긴유무 함수 발동
-    console.log(req.user);
-    res.render('mypage.ejs',{ user: req.user})
-})
-
-app.get('/write', 로긴유무, function(req, res){
-    res.render('write.ejs');    
-});
-
-app.get('/list', 로긴유무2, function(req, res){
-    db.collection('post').find().toArray(function(err,result){
-        console.log(result);
-        res.render('list.ejs', { posts : result});
-    });
-});
-
-app.get('/detail/:id', 로긴유무3, function(req,res){//detail/~로 get요청을 하면~
-    db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
-        console.log(result);
-        res.render('detail.ejs',{ data :result});
-    })
-    
-})
-
-//------------------------------------------------------------------------
-function 로긴유무(req, res, next){
-    if(req.user){
-        next()//있다면 통과
-    }else{
-        res.render('login.ejs');
-    }
-}
-function 로긴유무2(req, res, next){//로그인을 하지않을시
-    if(req.user){
-        next()//있다면 통과
-    }else{
-        db.collection('post').find().toArray(function(err,result){
-            console.log(result);
-            res.render('list-nologin.ejs', { posts : result});
-        });
-    }
-}
-function 로긴유무3(req, res, next){//로그인을 하지않을시detail
-    if(req.user){
-        next()//있다면 통과
-    }else{
-        db.collection('post').findOne({_id:parseInt(req.params.id)},function(err, result){
-            console.log(result);
-            res.render('detail-nologin.ejs',{ data   :result});
+app.get('/list',function(req, res){
+  
+    connection.query('select * from board',function(err, rows){
+        var queryString = "SELECT * FROM people"
+        connection.query(queryString,(err,rows,fields)=>{
+            res.json(rows)
         })
-    }
-}
+    })
+  })
+  
+  app.get('/loginlistview',function(req, res){
+    
+    connection.query('select * from board',function(err, rows){
+      console.log(rows)
+      res.render('login-notice_list.ejs', {'data' : rows}, function(err ,html){
+        if (err){
+            console.log(err)
+        }
+        res.end(html) // 응답 종료
+      })
+    })
+  })
+  
+
+
+//------------------------------------------------------------------------
 
 
 //------------------------------------------------------------------------
