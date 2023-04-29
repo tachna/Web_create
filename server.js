@@ -14,16 +14,16 @@ app.use(methodOverride('_method'))//메소드 오버라이드2
 
 
 var options = {
-    host : 'localhost',
-    user : 'root',
-    password : '1234',
+    host : '172.30.1.43',
+    user : 'dev',
+    password : 'pwd',
     database : 'mydatabase'
 }
 //
 const connection = mysql.createConnection({
-    host : 'localhost',
-    user:'root',
-    password:'1234',
+    host : '172.30.1.43',
+    user:'dev',
+    password:'pwd',
     database:'mydatabase',
     port:'3306'
 });
